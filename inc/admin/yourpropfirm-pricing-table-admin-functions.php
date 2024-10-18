@@ -35,7 +35,10 @@ function yourpropfirm_pricing_table_settings_page() {
     <?php
 }
 
-function yourpropfirm_pricing_table_register_table_pricing_settings() {
+// Hook for adding admin settings
+add_action( 'admin_init', 'yourpropfirm_pricing_table_register_table_pricing_setting_fields' );
+
+function yourpropfirm_pricing_table_register_table_pricing_setting_fields() {
     register_setting( 'yourpropfirm_pricing_table_settings_group', 'yourpropfirm_pricing_table_enable_table_pricing' );
     register_setting( 'yourpropfirm_pricing_table_settings_group', 'yourpropfirm_pricing_table_mode' );
     register_setting( 'yourpropfirm_pricing_table_settings_group', 'yourpropfirm_pricing_table_style' );
@@ -141,7 +144,7 @@ function yourpropfirm_pricing_table_register_table_pricing_settings() {
         'yourpropfirm_pricing_table_settings_section'
     );
 }
-add_action( 'admin_init', 'yourpropfirm_pricing_table_register_table_pricing_settings' );
+
 
 function yourpropfirm_pricing_table_settings_section_callback() {
     // Get the base URL of the site
