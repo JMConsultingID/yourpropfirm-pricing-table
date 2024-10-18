@@ -98,9 +98,11 @@
     }
 
     // Initialize tabs for Level 2
-    const initLevel2Tabs = () => {
-        const tabButtons = document.querySelectorAll('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-button, .yourpropfirm-pricing-table-table-mode-1 .yourpropfirm-pricing-table-tab-button');
-        const tabContents = document.querySelectorAll('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content, .yourpropfirm-pricing-table-table-mode-1 .yourpropfirm-pricing-table-tab-content');
+    // Initialize tabs for Level 2
+    const initLevel2Tabs = (parentTab) => {
+        // Use parentTab to dynamically select tab buttons and contents within the active parent tab
+        const tabButtons = parentTab.querySelectorAll('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-button, .yourpropfirm-pricing-table-table-mode-1 .yourpropfirm-pricing-table-tab-button');
+        const tabContents = parentTab.querySelectorAll('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content, .yourpropfirm-pricing-table-table-mode-1 .yourpropfirm-pricing-table-tab-content');
 
         if (!tabButtons.length || !tabContents.length) {
             return;
@@ -113,7 +115,7 @@
 
                 button.classList.add('active');
                 const tabId = button.dataset.tabId;
-                const activeTabContent = document.querySelector(`.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"], .yourpropfirm-pricing-table-table-mode-1 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
+                const activeTabContent = parentTab.querySelector(`.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"], .yourpropfirm-pricing-table-table-mode-1 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
                 activeTabContent.classList.add('active');
 
                 // Set the active slide index for the new tab
@@ -130,18 +132,19 @@
         });
 
         // Initialize swiper for the active main tab
-        const activeTabContent = document.querySelector('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content.active, .yourpropfirm-pricing-table-table-mode-1 .yourpropfirm-pricing-table-tab-content.active');
+        const activeTabContent = parentTab.querySelector('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content.active, .yourpropfirm-pricing-table-table-mode-1 .yourpropfirm-pricing-table-tab-content.active');
         if (activeTabContent && !activeTabContent.swiperInstance && window.innerWidth <= 991) {
             activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
             activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
         }
 
         // Activate the first tab on initial load
-        const firstTabButton = document.querySelector('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-button, .yourpropfirm-pricing-table-table-mode-1 .yourpropfirm-pricing-table-tab-button');
+        const firstTabButton = parentTab.querySelector('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-button, .yourpropfirm-pricing-table-table-mode-1 .yourpropfirm-pricing-table-tab-button');
         if (firstTabButton) {
             firstTabButton.click();
         }
     }
+
 
     // Initialize sub-tabs for the active main tab
     const initSubTabs = (mainTab) => {
