@@ -118,4 +118,5 @@
 
     // Initialize main tabs for all levels
     initLevel1Tabs();
+    initLevel2Tabs();
 })(jQuery);
