@@ -26,8 +26,7 @@ function yourpropfirm_pricing_table_settings_page() {
         <h1>YourPropfirm Table Pricing Settings</h1>
         <form method="post" action="options.php">
             <?php
-            settings_fields( 'yourpropfirm_pricing_table_settings_group' );
-            do_settings_sections( 'yourpropfirm-pricing-table-settings' );
+            settings_fields( 'yourpropfirm_pricing_table_settings_group' )
             do_settings_sections( 'yourpropfirm-pricing-table-settings' );
             submit_button( 'Generate Shortcode' );
             ?>
