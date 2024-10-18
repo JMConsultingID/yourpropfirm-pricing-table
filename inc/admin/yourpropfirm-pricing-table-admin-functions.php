@@ -20,7 +20,7 @@ function yourpropfirm_pricing_table_add_menu_page() {
 add_action( 'admin_menu', 'yourpropfirm_pricing_table_add_menu_page' );
 
 
-function yourpropfirm_pricing_table_pricing_settings_page() {
+function yourpropfirm_pricing_table_settings_page() {
     ?>
     <div class="wrap">
         <h1>YourPropfirm Table Pricing Settings</h1>
