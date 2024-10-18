@@ -15,6 +15,7 @@
         });
     });
 
+    // Function to initialize Swiper for each tab
     const initTabSwiper = (tabContent) => {
         if (window.innerWidth <= 991) {
             const swiperInstance = new Swiper(tabContent.querySelector('.swiper'), {
@@ -36,19 +37,30 @@
             });
 
             updateNavButtons(swiperInstance, tabContent);
+
             return swiperInstance;
         }
     }
 
+    // Function to update navigation buttons' disabled state
     const updateNavButtons = (swiperInstance, tabContent) => {
         const prevButton = tabContent.querySelector(".mobile__nav__btn:first-of-type");
         const nextButton = tabContent.querySelector(".mobile__nav__btn:last-of-type");
 
-        prevButton.classList.toggle('swiper-button-disabled', swiperInstance.isBeginning);
-        nextButton.classList.toggle('swiper-button-disabled', swiperInstance.isEnd);
+        if (swiperInstance.isBeginning) {
+            prevButton.classList.add('swiper-button-disabled');
+        } else {
+            prevButton.classList.remove('swiper-button-disabled');
+        }
+
+        if (swiperInstance.isEnd) {
+            nextButton.classList.add('swiper-button-disabled');
+        } else {
+            nextButton.classList.remove('swiper-button-disabled');
+        }
     }
 
-    // Initialize tabs for Level 1 and pass the context for Level 2
+    // Initialize tabs for Level 1
     const initLevel1Tabs = () => {
         const tabButtons = document.querySelectorAll('.yourpropfirm-pricing-table-table-level-1 .yourpropfirm-pricing-table-tab-button');
         const tabContents = document.querySelectorAll('.yourpropfirm-pricing-table-table-level-1 .yourpropfirm-pricing-table-tab-content');
@@ -67,45 +79,6 @@
                 const activeTabContent = document.querySelector(`.yourpropfirm-pricing-table-table-level-1 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
                 activeTabContent.classList.add('active');
 
-                if (activeTabContent.swiperInstance) {
-                    activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
-                } else if (window.innerWidth <= 991) {
-                    activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
-                    activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
-                }
-
-                // Initialize Level 2 tabs within the active Level 1 tab
-                initLevel2Tabs(activeTabContent);
-            });
-        });
-
-        const activeTabContent = document.querySelector('.yourpropfirm-pricing-table-table-level-1 .yourpropfirm-pricing-table-tab-content.active');
-        if (activeTabContent && !activeTabContent.swiperInstance && window.innerWidth <= 991) {
-            activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
-            activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
-        }
-    }
-
-    // Initialize tabs for Level 2 dynamically based on the parent tab context
-    const initLevel2Tabs = (parentTabContent) => {
-        // Only search within the active parent tab context
-        const tabButtons = parentTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-button');
-        const tabContents = parentTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content');
-
-        if (!tabButtons.length || !tabContents.length) {
-            return;
-        }
-
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-
-                button.classList.add('active');
-                const tabId = button.dataset.tabId;
-                const activeTabContent = parentTabContent.querySelector(`.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
-                activeTabContent.classList.add('active');
-
                 // Set the active slide index for the new tab
                 if (activeTabContent.swiperInstance) {
                     activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0); // Use slideTo with no animation
@@ -113,52 +86,100 @@
                     activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
                     activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
                 }
-
-                // Initialize Level 3 tabs within the active Level 2 tab
-                initLevel3Tabs(activeTabContent);
             });
         });
 
-        // Initialize swiper for the active Level 2 tab within the parent
-        const activeTabContent = parentTabContent.querySelector('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content.active');
+        // Initialize swiper for the active main tab
+        const activeTabContent = document.querySelector('.yourpropfirm-pricing-table-table-level-1 .yourpropfirm-pricing-table-tab-content.active');
         if (activeTabContent && !activeTabContent.swiperInstance && window.innerWidth <= 991) {
             activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
             activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
         }
     }
 
-    // Initialize tabs for Level 3
-    const initLevel3Tabs = (parentTabContent) => {
-        const tabButtons = parentTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-button');
-        const tabContents = parentTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content');
+    // Initialize tabs for Level 2
+    const initLevel2Tabs = () => {
+    // Cari tab yang aktif pada level 1
+    const activeParentTab = document.querySelector('.tab-nav.active');
+    
+    // Pastikan tab aktif ditemukan
+    if (!activeParentTab) return;
 
-        if (!tabButtons.length || !tabContents.length) {
+    // Tangkap nilai data-tab dari tab aktif
+    const activeParentTabId = activeParentTab.getAttribute('data-tab');
+    
+    // Gunakan nilai data-tab untuk membuat querySelectorAll dinamis
+    const tabButtons = document.querySelectorAll(`.${activeParentTabId} .yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-button`);
+    const tabContents = document.querySelectorAll(`.${activeParentTabId} .yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content`);
+
+    // Jika tidak ada tab buttons atau tab contents, hentikan eksekusi
+    if (!tabButtons.length || !tabContents.length) return;
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            button.classList.add('active');
+            const tabId = button.dataset.tabId;
+            const activeTabContent = document.querySelector(`.${activeParentTabId} .yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
+            activeTabContent.classList.add('active');
+
+            // Set the active slide index for the new tab
+            if (activeTabContent.swiperInstance) {
+                activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
+            } else if (window.innerWidth <= 991) {
+                activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
+                activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
+            }
+        });
+    });
+
+    // Inisialisasi swiper untuk tab yang aktif
+    const activeTabContent = document.querySelector(`.${activeParentTabId} .yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content.active`);
+    if (activeTabContent && !activeTabContent.swiperInstance && window.innerWidth <= 991) {
+        activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
+        activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
+    }
+}
+
+
+    // Initialize sub-tabs for the active main tab
+    const initSubTabs = (mainTab) => {
+        if (!mainTab) return;
+
+        const subTabButtons = mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-button');
+        const subTabContents = mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-content');
+
+        if (!subTabButtons.length || !subTabContents.length) {
             return;
         }
 
-        tabButtons.forEach(button => {
+        subTabButtons.forEach(button => {
             button.addEventListener('click', () => {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
+                subTabButtons.forEach(btn => btn.classList.remove('active'));
+                subTabContents.forEach(content => content.classList.remove('active'));
 
                 button.classList.add('active');
-                const tabId = button.dataset.tabId;
-                const activeTabContent = parentTabContent.querySelector(`.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
-                activeTabContent.classList.add('active');
+                const subTabId = button.dataset.subTabId;
+                const activeSubTabContent = mainTab.querySelector(`.yourpropfirm-pricing-table-sub-tab-content[data-sub-tab-id="${subTabId}"]`);
+                activeSubTabContent.classList.add('active');
 
-                if (activeTabContent.swiperInstance) {
-                    activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0); 
+                // Set the active slide index for the new sub-tab
+                if (activeSubTabContent.swiperInstance) {
+                    activeSubTabContent.swiperInstance.slideTo(activeSlideIndex, 0); // Use slideTo with no animation
                 } else if (window.innerWidth <= 991) {
-                    activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
-                    activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
+                    activeSubTabContent.swiperInstance = initTabSwiper(activeSubTabContent);
+                    activeSubTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
                 }
             });
         });
 
-        const activeTabContent = parentTabContent.querySelector('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content.active');
-        if (activeTabContent && !activeTabContent.swiperInstance && window.innerWidth <= 991) {
-            activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
-            activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
+        // Initialize swiper for the active sub-tab
+        const activeSubTabContent = mainTab.querySelector('.yourpropfirm-pricing-table-sub-tab-content.active');
+        if (activeSubTabContent && !activeSubTabContent.swiperInstance && window.innerWidth <= 991) {
+            activeSubTabContent.swiperInstance = initTabSwiper(activeSubTabContent);
+            activeSubTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
         }
     }
 
@@ -184,4 +205,5 @@
 
     // Initialize main tabs for both levels
     initLevel1Tabs();
+    initLevel2Tabs();
 })(jQuery);
