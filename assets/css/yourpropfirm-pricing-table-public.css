@@ -23,10 +23,10 @@
 .yourpropfirm-pricing-table-tab-button.active, .yourpropfirm-pricing-table-sub-tab-button.active {
     background-color: #ddd;
 }
-.yourpropfirm-pricing-table-content, .yourpropfirm-pricing-table-sub-tab-content {
+.yourpropfirm-pricing-table-tab-content, .yourpropfirm-pricing-table-sub-tab-content {
     display: none;
 }
-.yourpropfirm-pricing-table-content.active, .yourpropfirm-pricing-table-sub-tab-content.active {
+.yourpropfirm-pricing-table-tab-content.active, .yourpropfirm-pricing-table-sub-tab-content.active {
     display: block;
 }
 .yourpropfirm-pricing-table-checkout-button{
