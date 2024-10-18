@@ -98,7 +98,7 @@
     }
 
     // Initialize tabs for Level 2
-    const initLevel2Tabs = () => {
+const initLevel2Tabs = () => {
     // Tangkap tab yang aktif pada level atasnya (USD atau ZAR)
     const activeTabNav = document.querySelector('.tab-nav.active');
     
@@ -113,7 +113,7 @@
 
     if (!tabButtons.length || !tabContents.length) return; // Jika tidak ada tab buttons atau content, hentikan fungsi
 
-    // Tambahkan event listener untuk tab level kedua
+    // Tambahkan event listener untuk tab level kedua (1 Step ZAR, 2 Step ZAR)
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
             tabButtons.forEach(btn => btn.classList.remove('active'));
@@ -141,6 +141,7 @@
         activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
     }
 }
+
 
 
     // Initialize sub-tabs for the active main tab
