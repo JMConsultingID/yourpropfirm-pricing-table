@@ -97,9 +97,8 @@
         }
     }
 
-    // Initialize tabs for Level 2
-    const initLevel2Tabs = () => {
-    // Cari tab yang aktif pada level 1
+const initLevel2Tabs = () => {
+    // Cari tab yang aktif pada level 1 (USD atau ZAR)
     const activeParentTab = document.querySelector('.tab-nav.active');
     
     // Pastikan tab aktif ditemukan
@@ -142,6 +141,7 @@
         activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
     }
 }
+
 
 
     // Initialize sub-tabs for the active main tab
