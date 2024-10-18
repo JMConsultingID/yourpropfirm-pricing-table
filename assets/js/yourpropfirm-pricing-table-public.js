@@ -2,19 +2,7 @@
     'use strict';
     let activeSlideIndex = 0; // Variable to store the active slide index
 
-    // Initialize tippy tooltips
-    document.addEventListener("DOMContentLoaded", function() {
-        tippy(".yourpropfirm-pricing-table-label-tooltips", {
-            theme: 'light',
-            placement: 'right',
-            arrow: false,
-            animation: 'fade',
-            allowHTML: true,
-            interactive: true,
-            delay: [100, 100],
-        });
-    });
-
+    // Initialize Swiper for mobile sliders
     const initTabSwiper = (tabContent) => {
         if (window.innerWidth <= 991) {
             const swiperInstance = new Swiper(tabContent.querySelector('.swiper'), {
@@ -38,7 +26,7 @@
             updateNavButtons(swiperInstance, tabContent);
             return swiperInstance;
         }
-    }
+    };
 
     const updateNavButtons = (swiperInstance, tabContent) => {
         const prevButton = tabContent.querySelector(".mobile__nav__btn:first-of-type");
@@ -46,8 +34,9 @@
 
         prevButton.classList.toggle('swiper-button-disabled', swiperInstance.isBeginning);
         nextButton.classList.toggle('swiper-button-disabled', swiperInstance.isEnd);
-    }
+    };
 
+    // General tab initialization function
     const initTabs = (levelClass, initNextLevel) => {
         const tabButtons = document.querySelectorAll(`${levelClass} .yourpropfirm-pricing-table-tab-button`);
         const tabContents = document.querySelectorAll(`${levelClass} .yourpropfirm-pricing-table-tab-content`);
@@ -82,19 +71,22 @@
             activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
             activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
         }
-    }
+    };
 
+    // Initialize Level 3 Tabs
     const initLevel3Tabs = (mainTab) => {
         initTabs('.yourpropfirm-pricing-table-table-level-3', null);
-    }
+    };
 
+    // Initialize Level 2 Tabs
     const initLevel2Tabs = (mainTab) => {
         initTabs('.yourpropfirm-pricing-table-table-level-2', initLevel3Tabs);
-    }
+    };
 
+    // Initialize Level 1 Tabs
     const initLevel1Tabs = () => {
         initTabs('.yourpropfirm-pricing-table-table-level-1', initLevel2Tabs);
-    }
+    };
 
     const initAllSwipers = () => {
         document.querySelectorAll('.yourpropfirm-pricing-table-tab-content').forEach(tabContent => {
@@ -108,7 +100,7 @@
                 tabContent.swiperInstance = null;
             }
         });
-    }
+    };
 
     initAllSwipers();
     window.addEventListener('resize', initAllSwipers);
@@ -116,7 +108,9 @@
         button.addEventListener('click', initAllSwipers);
     });
 
-    // Initialize main tabs for all levels
+    // Initialize the tabs for all levels
     initLevel1Tabs();
     initLevel2Tabs();
+    initLevel3Tabs();
+
 })(jQuery);
