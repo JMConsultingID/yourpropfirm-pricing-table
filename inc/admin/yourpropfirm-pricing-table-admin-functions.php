@@ -12,19 +12,10 @@ function yourpropfirm_pricing_table_add_menu_page() {
         'YPF Pricing Table', // Page title
         'YPF Pricing Table', // Menu title
         'manage_options', // Capability
-        'yourpropfirm_pricing_table', // Menu slug
+        'yourpropfirm_pricing_table_settings', // Menu slug
         'yourpropfirm_pricing_table_settings_page', // Function to display the page content
         'dashicons-screenoptions', // Icon URL
         3 // Position
-    );
-
-    add_submenu_page(
-        'yourpropfirm_pricing_table', // Parent slug
-        'YPF Pricing Table', // Page title
-        'YPF Pricing Table', // Menu title
-        'manage_options', // Capability
-        'yourpropfirm_pricing_table_settings', // Menu slug
-        'yourpropfirm_pricing_table_settings_page' // Function to display the page content
     );
 }
 add_action( 'admin_menu', 'yourpropfirm_pricing_table_add_menu_page' );
