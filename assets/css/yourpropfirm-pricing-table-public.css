@@ -8,19 +8,19 @@
  */
 
 /* Add your custom CSS here */
-.yourpropfirm-pricing-table-buttons, .yourpropfirm-pricing-table-sub-tab-buttons {
+.yourpropfirm-pricing-table-tab-buttons, .yourpropfirm-pricing-table-sub-tab-buttons {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
-.yourpropfirm-pricing-table-button, .yourpropfirm-pricing-table-sub-tab-button {
+.yourpropfirm-pricing-table-tab-button, .yourpropfirm-pricing-table-sub-tab-button {
     margin: 0 10px;
     padding: 10px 20px;
     cursor: pointer;
     background-color: #f1f1f1;
     border: 1px solid #ccc;
 }
-.yourpropfirm-pricing-table-button.active, .yourpropfirm-pricing-table-sub-tab-button.active {
+.yourpropfirm-pricing-table-tab-button.active, .yourpropfirm-pricing-table-sub-tab-button.active {
     background-color: #ddd;
 }
 .yourpropfirm-pricing-table-content, .yourpropfirm-pricing-table-sub-tab-content {
