@@ -206,4 +206,15 @@ const initLevel2Tabs = () => {
     // Initialize main tabs for both levels
     initLevel1Tabs();
     initLevel2Tabs();
+
+    document.querySelectorAll('.tab-nav').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab-nav').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        // Inisialisasi ulang Level 2 setelah tab berubah
+        initLevel2Tabs();
+    });
+    });
+
 })(jQuery);
