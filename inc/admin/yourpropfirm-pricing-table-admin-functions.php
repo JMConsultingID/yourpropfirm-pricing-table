@@ -151,7 +151,7 @@ function yourpropfirm_pricing_table_settings_section_callback() {
     // Get the base URL of the site
     $site_url = home_url();
     // Manually append the path to the JSON file within the child theme directory
-    $file_url = $site_url . '/wp-content/themes/hellotheme/inc/functions/import/acf-export-ypf-default-2024.json';
+    $file_url = $site_url . '/wp-content/plugins/yourpropfirm-pricing-table/inc/import/acf-export-ypf-default-2024.json';
     
     echo '<p>Configure & Generate your Pricing Table settings below.</p>';
     echo '<p><strong>Download ACF Template:</strong> If you want to use a pre-built ACF template for your pricing table, you can download the JSON file from the link below and import it into your ACF settings.</p>';
