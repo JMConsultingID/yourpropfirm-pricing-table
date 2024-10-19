@@ -150,6 +150,8 @@
                 const activeContent = document.querySelector(`.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
                 if (activeContent) {
                     activeContent.classList.add('active');
+                    // Initialize sub-tabs inside Level 3 (if needed)
+                    initSubTabs(activeContent);
                 }
             });
         });
@@ -161,6 +163,8 @@
             const activeContent = document.querySelector(`.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
             if (activeContent) {
                 activeContent.classList.add('active');
+                // Initialize sub-tabs inside Level 3 (if needed)
+                initSubTabs(activeContent);
             }
         }
     }
