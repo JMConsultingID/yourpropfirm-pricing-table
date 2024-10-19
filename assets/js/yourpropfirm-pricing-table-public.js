@@ -149,7 +149,6 @@
     const initLevel3Tabs = (activeTabContent) => {
         // Ensure activeTabContent is valid before querying
         if (!activeTabContent) {
-            console.error('Error: activeTabContent is undefined or null');
             return;
         }
 
@@ -245,14 +244,11 @@
         button.addEventListener('click', initAllSwipers);
     });
 
-
     // Initialize all tabs (Level 1, Level 2, Level 3)
     const initAllTabs = () => {
         initLevel1Tabs();
-        initLevel2Tabs();
-        const activeContent = document.querySelector(`.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-content.${tabId}`);
-        activeContent.classList.add('active');
-        initLevel3Tabs(activeContent);
+        initLevel2Tabs();        
+        initLevel3Tabs();
     }
 
     // Initialize all tabs when the page is loaded
