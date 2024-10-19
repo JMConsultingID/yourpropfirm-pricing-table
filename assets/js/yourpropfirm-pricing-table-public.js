@@ -130,82 +130,84 @@
     }
 
     // Initialize tabs for Level 3 (with Elementor)
-    const initLevel3Tabs = () => {
-        const tabButtons = document.querySelectorAll('.jeg-elementor-kit .yourpropfirm-pricing-table-tab-button');
-        const tabContents = document.querySelectorAll('.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content');
+// Initialize tabs for Level 3 (with Elementor)
+const initLevel3Tabs = () => {
+    const tabButtons = document.querySelectorAll('.jeg-elementor-kit .yourpropfirm-pricing-table-tab-button');
+    const tabContents = document.querySelectorAll('.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content');
 
-        if (!tabButtons.length || !tabContents.length) {
-            return;
-        }
+    if (!tabButtons.length || !tabContents.length) {
+        return;
+    }
 
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons and contents
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
 
-                // Add active class to the clicked tab and its content
-                button.classList.add('active');
-                const tabId = button.dataset.tabId;
-                const activeContent = document.querySelector(`.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
-                if (activeContent) {
-                    activeContent.classList.add('active');
-                }
-
-                // Ensure the sub-tab content is shown for the active tab
-                initSubTabs(activeContent); // Initialize sub-tabs for the active tab content
-            });
-        });
-
-        // Initialize the first active tab for Level 3 on load
-        const firstActiveTab = document.querySelector('.jeg-elementor-kit .yourpropfirm-pricing-table-tab-button.active');
-        if (firstActiveTab) {
-            const tabId = firstActiveTab.dataset.tabId;
+            // Add active class to the clicked tab and its content
+            button.classList.add('active');
+            const tabId = button.dataset.tabId;
             const activeContent = document.querySelector(`.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
             if (activeContent) {
                 activeContent.classList.add('active');
-                initSubTabs(activeContent);  // Initialize sub-tabs for the default active tab
             }
+
+            // Ensure the sub-tab content is shown for the active tab
+            initSubTabs(activeContent); // Initialize sub-tabs for the active tab content
+        });
+    });
+
+    // Initialize the first active tab for Level 3 on load
+    const firstActiveTab = document.querySelector('.jeg-elementor-kit .yourpropfirm-pricing-table-tab-button.active');
+    if (firstActiveTab) {
+        const tabId = firstActiveTab.dataset.tabId;
+        const activeContent = document.querySelector(`.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
+        if (activeContent) {
+            activeContent.classList.add('active');
+            initSubTabs(activeContent);  // Initialize sub-tabs for the default active tab
         }
     }
+}
 
-    // Initialize sub-tabs for the active main tab
-    const initSubTabs = (mainTab) => {
-        if (!mainTab) return;
+// Initialize sub-tabs for the active main tab
+const initSubTabs = (mainTab) => {
+    if (!mainTab) return;
 
-        const subTabButtons = mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-button');
-        const subTabContents = mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-content');
+    const subTabButtons = mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-button');
+    const subTabContents = mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-content');
 
-        if (!subTabButtons.length || !subTabContents.length) {
-            return;
-        }
+    if (!subTabButtons.length || !subTabContents.length) {
+        return;
+    }
 
-        subTabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all sub-tab buttons and contents
-                subTabButtons.forEach(btn => btn.classList.remove('active'));
-                subTabContents.forEach(content => content.classList.remove('active'));
+    subTabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all sub-tab buttons and contents
+            subTabButtons.forEach(btn => btn.classList.remove('active'));
+            subTabContents.forEach(content => content.classList.remove('active'));
 
-                // Add active class to the clicked sub-tab and its content
-                button.classList.add('active');
-                const subTabId = button.dataset.subTabId;
-                const activeSubTabContent = mainTab.querySelector(`.yourpropfirm-pricing-table-sub-tab-content[data-sub-tab-id="${subTabId}"]`);
-                if (activeSubTabContent) {
-                    activeSubTabContent.classList.add('active');
-                }
-            });
-        });
-
-        // Initialize the first active sub-tab content if any
-        const firstActiveSubTab = mainTab.querySelector('.yourpropfirm-pricing-table-sub-tab-button.active');
-        if (firstActiveSubTab) {
-            const subTabId = firstActiveSubTab.dataset.subTabId;
+            // Add active class to the clicked sub-tab and its content
+            button.classList.add('active');
+            const subTabId = button.dataset.subTabId;
             const activeSubTabContent = mainTab.querySelector(`.yourpropfirm-pricing-table-sub-tab-content[data-sub-tab-id="${subTabId}"]`);
             if (activeSubTabContent) {
                 activeSubTabContent.classList.add('active');
             }
+        });
+    });
+
+    // Initialize the first active sub-tab content if any
+    const firstActiveSubTab = mainTab.querySelector('.yourpropfirm-pricing-table-sub-tab-button.active');
+    if (firstActiveSubTab) {
+        const subTabId = firstActiveSubTab.dataset.subTabId;
+        const activeSubTabContent = mainTab.querySelector(`.yourpropfirm-pricing-table-sub-tab-content[data-sub-tab-id="${subTabId}"]`);
+        if (activeSubTabContent) {
+            activeSubTabContent.classList.add('active');
         }
     }
+}
+
 
 
 
