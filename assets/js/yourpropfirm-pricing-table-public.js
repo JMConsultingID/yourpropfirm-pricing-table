@@ -86,10 +86,12 @@
                     activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
                     activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
                 }
+
+                // Initialize sub-tabs inside Level 1
+                initSubTabs(activeTabContent);
             });
         });
 
-        // Initialize swiper for the active main tab
         const activeTabContent = document.querySelector('.yourpropfirm-pricing-table-table-level-1 .yourpropfirm-pricing-table-tab-content.active');
         if (activeTabContent && !activeTabContent.swiperInstance && window.innerWidth <= 991) {
             activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
@@ -123,27 +125,24 @@
                     activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
                     activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
                 }
+
+                // Initialize sub-tabs inside Level 2
+                initSubTabs(activeTabContent);
             });
         });
 
-        // Initialize swiper for the active main tab
         const activeTabContent = document.querySelector('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content.active, .yourpropfirm-pricing-table-table-mode-1 .yourpropfirm-pricing-table-tab-content.active');
         if (activeTabContent && !activeTabContent.swiperInstance && window.innerWidth <= 991) {
             activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
             activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
         }
-
-        // Activate the first tab on initial load
-        const firstTabButton = document.querySelector('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-button, .yourpropfirm-pricing-table-table-mode-1 .yourpropfirm-pricing-table-tab-button');
-        if (firstTabButton) {
-            firstTabButton.click();
-        }
     }
+
 
     // Initialize tabs for Level 3
     const initLevel3Tabs = () => {
-        const tabButtons = document.querySelectorAll('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-nav');
-        const tabContents = document.querySelectorAll('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-content');
+        const tabButtons = document.querySelectorAll('.jeg-elementor-kit .tab-nav');
+        const tabContents = document.querySelectorAll('.jeg-elementor-kit .tab-content');
 
         if (!tabButtons.length || !tabContents.length) {
             return;
@@ -156,19 +155,69 @@
 
                 button.classList.add('active');
                 const tabId = button.dataset.tab;
-                const activeContent = document.querySelector(`.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-content.${tabId}`);
+                const activeContent = document.querySelector(`.jeg-elementor-kit .tab-content.${tabId}`);
                 activeContent.classList.add('active');
+
+                // Initialize sub-tabs inside Level 3 (if needed)
+                initSubTabs(activeContent);
             });
         });
 
         // Initialize the first active tab for level 3 on load
-        const firstActiveTab = document.querySelector('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-nav.active');
+        const firstActiveTab = document.querySelector('.jeg-elementor-kit .tab-nav.active');
         if (firstActiveTab) {
             const tabId = firstActiveTab.dataset.tab;
-            const activeContent = document.querySelector(`.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-content.${tabId}`);
+            const activeContent = document.querySelector(`.jeg-elementor-kit .tab-content.${tabId}`);
             activeContent.classList.add('active');
+            initSubTabs(activeContent);  // Initialize sub-tabs for the default active tab
         }
     }
+
+
+    const initSubTabs = (mainTab) => {
+        if (!mainTab) return;
+
+        const subTabButtons = mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-button');
+        const subTabContents = mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-content');
+
+        if (!subTabButtons.length || !subTabContents.length) {
+            return;
+        }
+
+        subTabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                subTabButtons.forEach(btn => btn.classList.remove('active'));
+                subTabContents.forEach(content => content.classList.remove('active'));
+
+                button.classList.add('active');
+                const subTabId = button.dataset.subTabId;
+                const activeSubTabContent = mainTab.querySelector(`.yourpropfirm-pricing-table-sub-tab-content[data-sub-tab-id="${subTabId}"]`);
+                activeSubTabContent.classList.add('active');
+
+                // Set the active slide index for the new sub-tab
+                if (activeSubTabContent.swiperInstance) {
+                    activeSubTabContent.swiperInstance.slideTo(activeSlideIndex, 0); // Use slideTo with no animation
+                } else if (window.innerWidth <= 991) {
+                    activeSubTabContent.swiperInstance = initTabSwiper(activeSubTabContent);
+                    activeSubTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
+                }
+            });
+        });
+
+        // Initialize swiper for the active sub-tab
+        const activeSubTabContent = mainTab.querySelector('.yourpropfirm-pricing-table-sub-tab-content.active');
+        if (activeSubTabContent && !activeSubTabContent.swiperInstance && window.innerWidth <= 991) {
+            activeSubTabContent.swiperInstance = initTabSwiper(activeSubTabContent);
+            activeSubTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
+        }
+    }
+
+    initAllSwipers();
+    window.addEventListener('resize', initAllSwipers);
+    document.querySelectorAll('.yourpropfirm-pricing-table-tab-button').forEach(button => {
+        button.addEventListener('click', initAllSwipers);
+    });
+
 
     // Initialize all tabs (Level 1, Level 2, Level 3)
     const initAllTabs = () => {
