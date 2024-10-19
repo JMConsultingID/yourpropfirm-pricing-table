@@ -262,7 +262,9 @@
 
         // Initialize the active tab in Level 3 on page load
         const activeContent = document.querySelector('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-content.active');
-        initLevel3Tabs(activeContent);  // Initialize Level 3 on load with active content
+        if (activeContent) {
+            initLevel3Tabs(activeContent);  // Initialize Level 3 on load with active content
+        }
     }
 
     // Initialize all tabs when the page is loaded
