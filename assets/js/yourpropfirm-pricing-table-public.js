@@ -129,7 +129,6 @@
         }
     }
 
-    // Initialize tabs for Level 3 (with Elementor)
 // Initialize tabs for Level 3 (with Elementor)
 const initLevel3Tabs = () => {
     const tabButtons = document.querySelectorAll('.jeg-elementor-kit .yourpropfirm-pricing-table-tab-button');
@@ -153,8 +152,8 @@ const initLevel3Tabs = () => {
                 activeContent.classList.add('active');
             }
 
-            // Ensure the sub-tab content is shown for the active tab
-            initSubTabs(activeContent); // Initialize sub-tabs for the active tab content
+            // Re-initialize sub-tabs after activating the new tab
+            initSubTabs(activeContent);  // Ensure sub-tabs inside the active tab are properly initialized
         });
     });
 
@@ -165,7 +164,7 @@ const initLevel3Tabs = () => {
         const activeContent = document.querySelector(`.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
         if (activeContent) {
             activeContent.classList.add('active');
-            initSubTabs(activeContent);  // Initialize sub-tabs for the default active tab
+            initSubTabs(activeContent);  // Ensure sub-tabs inside the active tab are initialized on page load
         }
     }
 }
@@ -205,20 +204,24 @@ const initSubTabs = (mainTab) => {
         if (activeSubTabContent) {
             activeSubTabContent.classList.add('active');
         }
+    } else {
+        // If no sub-tab is active by default, make the first sub-tab active
+        if (subTabButtons.length > 0) {
+            subTabButtons[0].classList.add('active');
+            subTabContents[0].classList.add('active');
+        }
     }
 }
 
+// Initialize all tabs (Level 1, Level 2, Level 3)
+const initAllTabs = () => {
+    initLevel1Tabs();
+    initLevel2Tabs();
+    initLevel3Tabs();
+}
 
+// Initialize all tabs when the page is loaded
+document.addEventListener('DOMContentLoaded', initAllTabs);
 
-
-    // Initialize all tabs (Level 1, Level 2, Level 3)
-    const initAllTabs = () => {
-        initLevel1Tabs();
-        initLevel2Tabs();
-        initLevel3Tabs();
-    }
-
-    // Initialize all tabs when the page is loaded
-    document.addEventListener('DOMContentLoaded', initAllTabs);
 
 })(jQuery);
