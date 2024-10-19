@@ -250,7 +250,9 @@
     const initAllTabs = () => {
         initLevel1Tabs();
         initLevel2Tabs();
-        initLevel3Tabs(activeTabContent);
+        const activeContent = document.querySelector(`.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-content.${tabId}`);
+        activeContent.classList.add('active');
+        initLevel3Tabs(activeContent);
     }
 
     // Initialize all tabs when the page is loaded
