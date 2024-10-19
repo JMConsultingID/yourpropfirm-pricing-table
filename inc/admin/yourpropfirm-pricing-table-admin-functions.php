@@ -178,7 +178,7 @@ function yourpropfirm_pricing_table_mode_callback() {
     <select name="yourpropfirm_pricing_table_mode">
         <option value="level-1" <?php selected( $options, 'level-1' ); ?>>Tab Level 1</option>
         <option value="level-2" <?php selected( $options, 'level-2' ); ?>>Tab Level 2</option>
-        <option value="level-3" <?php selected( $options, 'level-3' ); ?>>Tab Level 3</option>
+        <option value="level-3" <?php selected( $options, 'level-3' ); ?>>Tab Level 3 (Jkit Tabs)</option>
     </select>
     <?php
 }
