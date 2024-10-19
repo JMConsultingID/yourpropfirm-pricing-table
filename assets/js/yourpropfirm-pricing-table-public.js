@@ -189,8 +189,6 @@
         }
     }
 
-
-
     const initAllSwipers = () => {
         document.querySelectorAll('.yourpropfirm-pricing-table-tab-content').forEach(tabContent => {
             if (tabContent.classList.contains('active')) {
@@ -213,5 +211,18 @@
 
     // Initialize main tabs for both levels
     initLevel1Tabs();
-    initLevel2Tabs();
+
+    // Inisialisasi saat halaman pertama kali diload
+    document.addEventListener('DOMContentLoaded', () => {
+        // Cari tab level 1 yang aktif secara default
+        const activeTabNav = document.querySelector('.jeg-elementor-kit .tab-nav.active');
+        
+        if (activeTabNav) {
+            const tabId = activeTabNav.getAttribute('data-tab');
+            const activeContent = document.querySelector(`.jeg-elementor-kit .tab-content.${tabId}`);
+            
+            // Inisialisasi tab level 2 pada tab level 1 yang aktif secara default
+            initLevel2Tabs(activeContent);
+        }
+    });
 })(jQuery);
