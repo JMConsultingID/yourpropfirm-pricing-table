@@ -212,6 +212,20 @@
         }
     }
 
+    const initAllSwipers = () => {
+        document.querySelectorAll('.yourpropfirm-pricing-table-tab-content').forEach(tabContent => {
+            if (tabContent.classList.contains('active')) {
+                if (!tabContent.swiperInstance && window.innerWidth <= 991) {
+                    tabContent.swiperInstance = initTabSwiper(tabContent);
+                    tabContent.swiperInstance.slideTo(activeSlideIndex, 0);
+                }
+            } else if (tabContent.swiperInstance) {
+                tabContent.swiperInstance.destroy();
+                tabContent.swiperInstance = null;
+            }
+        });
+    }
+
     initAllSwipers();
     window.addEventListener('resize', initAllSwipers);
     document.querySelectorAll('.yourpropfirm-pricing-table-tab-button').forEach(button => {
