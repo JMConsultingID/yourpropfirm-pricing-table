@@ -239,5 +239,21 @@
         button.addEventListener('click', initAllSwipers);
     });
 
+    // Handle the initial tab load (Level 1, Level 2, Level 3)
+    const initAllTabs = () => {
+        initLevel1Tabs();
+        initLevel2Tabs();
+
+        // Initialize the active tab in Level 3 on page load
+        const activeContent = document.querySelector('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-content.active');
+        if (activeContent) {
+            initLevel3Tabs(activeContent);  // Initialize Level 3 on load with active content
+        }
+    }
+
+    // Initialize all tabs when the page is loaded
+    document.addEventListener('DOMContentLoaded', initAllTabs);
+
+
 
 })(jQuery);
