@@ -97,60 +97,53 @@
         }
     }
 
-    // Initialize tabs for Level 2
-    // Initialize tabs for Level 2 dynamically based on the active tab in the jeg-elementor-kit
-    const initLevel2Tabs = () => {
-        // Find the active tab in jeg-elementor-kit
-        const activeTabNav = document.querySelector('.jeg-elementor-kit .tab-nav.active');
-        
-        if (!activeTabNav) {
+    // Initialize tabs for Level 1 and reinitialize Level 2 dynamically
+    document.querySelectorAll('.jeg-elementor-kit .tab-nav').forEach(button => {
+        button.addEventListener('click', () => {
+            // Hilangkan class active dari semua tab level 1
+            document.querySelectorAll('.jeg-elementor-kit .tab-nav').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.jeg-elementor-kit .tab-content').forEach(content => content.classList.remove('active'));
+
+            // Tambahkan class active ke tab yang diklik
+            button.classList.add('active');
+            const tabId = button.dataset.tab;
+            const activeContent = document.querySelector(`.jeg-elementor-kit .tab-content.${tabId}`);
+            activeContent.classList.add('active');
+
+            // Inisialisasi ulang event listener untuk level 2 tabs setelah tab level 1 diubah
+            initLevel2Tabs(activeContent);
+        });
+    });
+
+    // Fungsi untuk menginisialisasi event listener untuk Level 2 tabs
+    const initLevel2Tabs = (activeTabContent) => {
+        const level2Buttons = activeTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-button');
+        const level2Contents = activeTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content');
+
+        if (!level2Buttons.length || !level2Contents.length) {
             return;
         }
 
-        // Get the data-tab attribute of the active tab
-        const activeTabId = activeTabNav.getAttribute('data-tab');
-
-        // Use the active tab ID to find the corresponding tab-content
-        const activeTabContent = document.querySelector(`.jeg-elementor-kit .tab-content.${activeTabId}`);
-        
-        if (!activeTabContent) {
-            return;
-        }
-
-        // Now, within the active tab-content, find the buttons and contents for Level 2 tabs
-        const tabButtons = activeTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-button');
-        const tabContents = activeTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content');
-
-        if (!tabButtons.length || !tabContents.length) {
-            return;
-        }
-
-        tabButtons.forEach(button => {
+        level2Buttons.forEach(button => {
             button.addEventListener('click', () => {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
+                // Hilangkan class active dari semua tab level 2
+                level2Buttons.forEach(btn => btn.classList.remove('active'));
+                level2Contents.forEach(content => content.classList.remove('active'));
 
+                // Tambahkan class active ke tab level 2 yang diklik
                 button.classList.add('active');
                 const tabId = button.dataset.tabId;
-                const activeTabContentLevel2 = activeTabContent.querySelector(`.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
-                activeTabContentLevel2.classList.add('active');
+                const activeContent = activeTabContent.querySelector(`.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
+                activeContent.classList.add('active');
 
-                // Set the active slide index for the new tab
-                if (activeTabContentLevel2.swiperInstance) {
-                    activeTabContentLevel2.swiperInstance.slideTo(activeSlideIndex, 0); // Use slideTo with no animation
-                } else if (window.innerWidth <= 991) {
-                    activeTabContentLevel2.swiperInstance = initTabSwiper(activeTabContentLevel2);
-                    activeTabContentLevel2.swiperInstance.slideTo(activeSlideIndex, 0);
-                }
-
-                // If there are sub-tabs in Level 3, initialize them
-                initSubTabs(activeTabContentLevel2);
+                // Inisialisasi ulang sub-tabs di dalam tab level 2 jika ada
+                initSubTabs(activeContent);
             });
         });
 
-        // Initialize swiper for the active Level 2 tab content within the active parent tab
+        // Inisialisasi tab level 2 aktif jika ada
         const activeTabContentLevel2 = activeTabContent.querySelector('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content.active');
-        if (activeTabContentLevel2 && !activeTabContentLevel2.swiperInstance && window.innerWidth <= 991) {
+        if (activeTabContentLevel2 && window.innerWidth <= 991) {
             activeTabContentLevel2.swiperInstance = initTabSwiper(activeTabContentLevel2);
             activeTabContentLevel2.swiperInstance.slideTo(activeSlideIndex, 0);
         }
@@ -190,11 +183,12 @@
 
         // Initialize swiper for the active sub-tab content
         const activeSubTabContent = mainTab.querySelector('.yourpropfirm-pricing-table-sub-tab-content.active');
-        if (activeSubTabContent && !activeSubTabContent.swiperInstance && window.innerWidth <= 991) {
+        if (activeSubTabContent && window.innerWidth <= 991) {
             activeSubTabContent.swiperInstance = initTabSwiper(activeSubTabContent);
             activeSubTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
         }
     }
+
 
 
     const initAllSwipers = () => {
