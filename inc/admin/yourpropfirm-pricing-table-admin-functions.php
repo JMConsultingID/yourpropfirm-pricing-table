@@ -255,8 +255,12 @@ function yourpropfirm_pricing_table_pricing_description_callback() {
 
     if ($mode === 'level-1'){
         $shortcode_tag = 'yourpropfirm_table_level_1';
-    } else {
+    } elseif ($mode === 'level-2') {
         $shortcode_tag = 'yourpropfirm_table_level_2';
+    } elseif ($mode === 'level-3') {
+        $shortcode_tag = 'yourpropfirm_table_level_3';
+    } else{
+        $shortcode_tag = 'yourpropfirm_table_level_1';
     }
     ?>
     <p>Use this shortcode on your Front-End or Table Pricing Page : <br/>
