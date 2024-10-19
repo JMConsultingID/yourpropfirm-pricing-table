@@ -81,9 +81,9 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
 
                                 // ACF field group names for each level
                                 $acf_levels = array(
-                                    'level_1' => 'yourpropfirm_pricing_table_plan_step_1',
-                                    'level_2' => 'yourpropfirm_pricing_table_plan_step_2',
-                                    'level_3' => 'yourpropfirm_pricing_table_plan_step_3',
+                                    'level_1' => 'yourpropfirm_pricing_plan_step_1',
+                                    'level_2' => 'yourpropfirm_pricing_plan_step_2',
+                                    'level_3' => 'yourpropfirm_pricing_plan_step_3',
                                 );
 
                                 // Fetch tooltip values
