@@ -7,18 +7,18 @@
  *
  * @package yourpropfirm-pricing-table
  */
-function yourpropfirm_pricing_table_add_menu_page() {
-    add_menu_page(
+function yourpropfirm_pricing_table_add_submenu_page() {
+    add_submenu_page(
+        'yourpropfirm_dashboard', // Parent slug (from yourpropfirm plugin)
         'YPF Pricing Table', // Page title
         'YPF Pricing Table', // Menu title
         'manage_options', // Capability
         'yourpropfirm_pricing_table_settings', // Menu slug
-        'yourpropfirm_pricing_table_settings_page', // Function to display the page content
-        'dashicons-screenoptions', // Icon URL
-        3 // Position
+        'yourpropfirm_pricing_table_settings_page' // Function to display the page content
     );
 }
-add_action( 'admin_menu', 'yourpropfirm_pricing_table_add_menu_page' );
+add_action( 'admin_menu', 'yourpropfirm_pricing_table_add_submenu_page' );
+
 
 
 function yourpropfirm_pricing_table_settings_page() {
