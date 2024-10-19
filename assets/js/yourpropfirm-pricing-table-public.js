@@ -250,7 +250,6 @@
     const initAllTabs = () => {
         initLevel1Tabs();
         initLevel2Tabs();
-        initLevel3Tabs();
     }
 
     // Initialize all tabs when the page is loaded
