@@ -164,19 +164,34 @@
                 const activeContent = activeTabContent.querySelector(`.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
                 activeContent.classList.add('active');
 
-                // Reinitialize sub-tabs inside the active level 3 tab after switching tabs
+                // Initialize sub-tabs inside the active level 3 tab
                 initSubTabs(activeContent);
+
+                // Auto activate the first sub-tab when switching tabs in Level 3
+                activateFirstSubTab(activeContent);
             });
         });
-
-        // Initialize sub-tabs on initial load
-        initSubTabs(activeTabContent); // Ensure sub-tabs are initialized for the initially active tab
 
         // Handle Swiper initialization for the active Level 3 tab
         const activeTabContentLevel3 = activeTabContent.querySelector('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content.active');
         if (activeTabContentLevel3 && window.innerWidth <= 991) {
             activeTabContentLevel3.swiperInstance = initTabSwiper(activeTabContentLevel3);
             activeTabContentLevel3.swiperInstance.slideTo(activeSlideIndex, 0);
+        }
+
+        // Initialize sub-tabs on initial load
+        initSubTabs(activeTabContent); // Ensure sub-tabs are initialized for the initially active tab
+        activateFirstSubTab(activeTabContent); // Auto activate first sub-tab on load
+    }
+
+    // Activate the first sub-tab in the currently active tab content
+    const activateFirstSubTab = (mainTab) => {
+        const firstSubTabButton = mainTab.querySelector('.yourpropfirm-pricing-table-sub-tab-button');
+        const firstSubTabContent = mainTab.querySelector('.yourpropfirm-pricing-table-sub-tab-content');
+
+        if (firstSubTabButton && firstSubTabContent) {
+            firstSubTabButton.classList.add('active');
+            firstSubTabContent.classList.add('active');
         }
     }
 
@@ -218,6 +233,7 @@
             activeSubTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
         }
     }
+
 
     const initAllSwipers = () => {
         document.querySelectorAll('.yourpropfirm-pricing-table-tab-content').forEach(tabContent => {
