@@ -124,8 +124,8 @@
                     activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
                 }
 
-                // Initialize sub-tabs for the active main tab
-                initSubTabs(activeTabContent);
+                // Initialize level 3 tabs for the active level 2 tab
+                initLevel3Tabs(activeTabContent);
             });
         });
 
@@ -155,7 +155,7 @@
             const activeContent = document.querySelector(`.jeg-elementor-kit .tab-content.${tabId}`);
             activeContent.classList.add('active');
 
-            initLevel3Tabs(activeContent);
+            initLevel3Tabs(activeContent);  // Initialize level 3 when switching level 1
         });
     });
 
@@ -187,7 +187,6 @@
             activeTabContentLevel3.swiperInstance.slideTo(activeSlideIndex, 0);
         }
     }
-
 
     // Initialize sub-tabs for the active main tab
     const initSubTabs = (mainTab) => {
