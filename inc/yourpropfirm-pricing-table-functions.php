@@ -15,4 +15,6 @@ require dirname(__FILE__) . '/admin/yourpropfirm-pricing-table-admin-functions.p
 
 // Include public functions
 require dirname(__FILE__) . '/public/yourpropfirm-pricing-table-public-functions.php';
+require dirname(__FILE__) . '/public/yourpropfirm-pricing-table-public-level-1.php';
 require dirname(__FILE__) . '/public/yourpropfirm-pricing-table-public-level-2.php';
+require dirname(__FILE__) . '/public/yourpropfirm-pricing-table-public-level-3.php';
