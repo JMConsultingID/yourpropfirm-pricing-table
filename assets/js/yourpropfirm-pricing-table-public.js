@@ -129,7 +129,7 @@
         }
     }
 
-    // Initialize tabs for Level 1 and reinitialize Level 2 dynamically
+    // Initialize all tabs for Level 1 and Level 2 dynamically
     document.querySelectorAll('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-nav').forEach(button => {
         button.addEventListener('click', () => {
             // Remove active class from all tabs in level 1
@@ -142,7 +142,7 @@
             activeContent.classList.add('active');
 
             // Initialize Level 3 tabs after switching level 1
-            initLevel3Tabs(activeContent);  
+            initLevel3Tabs(activeContent);
         });
     });
 
@@ -150,9 +150,7 @@
         const level3Buttons = activeTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-button');
         const level3Contents = activeTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content');
 
-        // Ensure level 3 buttons and contents exist
         if (!level3Buttons.length || !level3Contents.length) {
-            console.warn('Warning: No Level 3 buttons or contents found.');
             return;
         }
 
@@ -164,10 +162,9 @@
                 button.classList.add('active');
                 const tabId = button.dataset.tabId;
                 const activeContent = activeTabContent.querySelector(`.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
-                if (activeContent) {
-                    activeContent.classList.add('active');
-                }
+                activeContent.classList.add('active');
 
+                // Initialize sub-tabs inside the active level 3 tab
                 initSubTabs(activeContent);
             });
         });
