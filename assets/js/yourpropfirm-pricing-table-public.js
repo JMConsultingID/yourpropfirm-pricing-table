@@ -129,107 +129,123 @@
         }
     }
 
-    // Initialize tabs for Level 3 (with Elementor)
-    const initLevel3Tabs = () => {
-        const tabButtons = document.querySelectorAll('.jeg-elementor-kit .yourpropfirm-pricing-table-tab-button');
-        const tabContents = document.querySelectorAll('.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content');
+// Initialize tabs for Level 1 and reinitialize Level 2 dynamically
+document.querySelectorAll('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-nav').forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove active class from all tabs in level 1
+        document.querySelectorAll('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-nav').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-content').forEach(content => content.classList.remove('active'));
 
-        if (!tabButtons.length || !tabContents.length) {
-            return;
-        }
+        button.classList.add('active');
+        const tabId = button.dataset.tab;
+        const activeContent = document.querySelector(`.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-content.${tabId}`);
+        activeContent.classList.add('active');
 
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
+        // Initialize Level 3 tabs after switching level 1
+        initLevel3Tabs(activeContent);  
+    });
+});
 
-                // Add active class to the clicked tab and its content
-                button.classList.add('active');
-                const tabId = button.dataset.tabId;
-                const activeContent = document.querySelector(`.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
-                if (activeContent) {
-                    activeContent.classList.add('active');
-                    activeContent.style.display = 'block'; // Ensure the content is displayed
-                }
+const initLevel3Tabs = (activeTabContent) => {
+    const level3Buttons = activeTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-button');
+    const level3Contents = activeTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content');
 
-                // Re-initialize sub-tabs after activating the new tab
-                initSubTabs(activeContent);  // Ensure sub-tabs inside the active tab are properly initialized
-            });
-        });
-
-        // Initialize the first active tab for Level 3 on load
-        const firstActiveTab = document.querySelector('.jeg-elementor-kit .yourpropfirm-pricing-table-tab-button.active');
-        if (firstActiveTab) {
-            const tabId = firstActiveTab.dataset.tabId;
-            const activeContent = document.querySelector(`.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
-            if (activeContent) {
-                activeContent.classList.add('active');
-                activeContent.style.display = 'block'; // Ensure the first active content is displayed on page load
-                initSubTabs(activeContent);  // Ensure sub-tabs inside the active tab are initialized on page load
-            }
-        }
+    if (!level3Buttons.length || !level3Contents.length) {
+        return;
     }
 
-    // Initialize sub-tabs for the active main tab
-    const initSubTabs = (mainTab) => {
-        if (!mainTab) return;
+    level3Buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            level3Buttons.forEach(btn => btn.classList.remove('active'));
+            level3Contents.forEach(content => content.classList.remove('active'));
 
-        const subTabButtons = mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-button');
-        const subTabContents = mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-content');
+            button.classList.add('active');
+            const tabId = button.dataset.tabId;
+            const activeContent = activeTabContent.querySelector(`.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
+            activeContent.classList.add('active');
 
-        if (!subTabButtons.length || !subTabContents.length) {
-            return;
-        }
-
-        subTabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all sub-tab buttons and contents
-                subTabButtons.forEach(btn => btn.classList.remove('active'));
-                subTabContents.forEach(content => {
-                    content.classList.remove('active');
-                    content.style.display = 'none'; // Hide all sub-tab content
-                });
-
-                // Add active class to the clicked sub-tab and its content
-                button.classList.add('active');
-                const subTabId = button.dataset.subTabId;
-                const activeSubTabContent = mainTab.querySelector(`.yourpropfirm-pricing-table-sub-tab-content[data-sub-tab-id="${subTabId}"]`);
-                if (activeSubTabContent) {
-                    activeSubTabContent.classList.add('active');
-                    activeSubTabContent.style.display = 'block'; // Show the active sub-tab content
-                }
-            });
+            // Initialize sub-tabs inside the active level 3 tab
+            initSubTabs(activeContent);
         });
+    });
 
-        // Initialize the first active sub-tab content if any
-        const firstActiveSubTab = mainTab.querySelector('.yourpropfirm-pricing-table-sub-tab-button.active');
-        if (firstActiveSubTab) {
-            const subTabId = firstActiveSubTab.dataset.subTabId;
+    // Handle Swiper initialization for the active Level 3 tab
+    const activeTabContentLevel3 = activeTabContent.querySelector('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content.active');
+    if (activeTabContentLevel3 && window.innerWidth <= 991) {
+        activeTabContentLevel3.swiperInstance = initTabSwiper(activeTabContentLevel3);
+        activeTabContentLevel3.swiperInstance.slideTo(activeSlideIndex, 0);
+    }
+}
+
+// Initialize sub-tabs for the active main tab
+const initSubTabs = (mainTab) => {
+    if (!mainTab) return;
+
+    const subTabButtons = mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-button');
+    const subTabContents = mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-content');
+
+    if (!subTabButtons.length || !subTabContents.length) {
+        return;
+    }
+
+    subTabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            subTabButtons.forEach(btn => btn.classList.remove('active'));
+            subTabContents.forEach(content => content.classList.remove('active'));
+
+            button.classList.add('active');
+            const subTabId = button.dataset.subTabId;
             const activeSubTabContent = mainTab.querySelector(`.yourpropfirm-pricing-table-sub-tab-content[data-sub-tab-id="${subTabId}"]`);
-            if (activeSubTabContent) {
-                activeSubTabContent.classList.add('active');
-                activeSubTabContent.style.display = 'block'; // Ensure the first sub-tab content is displayed
+            activeSubTabContent.classList.add('active');
+
+            // Set the active slide index for the new sub-tab
+            if (activeSubTabContent.swiperInstance) {
+                activeSubTabContent.swiperInstance.slideTo(activeSlideIndex, 0); // Use slideTo with no animation
+            } else if (window.innerWidth <= 991) {
+                activeSubTabContent.swiperInstance = initTabSwiper(activeSubTabContent);
+                activeSubTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
             }
-        } else {
-            // If no sub-tab is active by default, make the first sub-tab active
-            if (subTabButtons.length > 0) {
-                subTabButtons[0].classList.add('active');
-                subTabContents[0].classList.add('active');
-                subTabContents[0].style.display = 'block'; // Show the first sub-tab content by default
+        });
+    });
+
+    // Initialize swiper for the active sub-tab
+    const activeSubTabContent = mainTab.querySelector('.yourpropfirm-pricing-table-sub-tab-content.active');
+    if (activeSubTabContent && !activeSubTabContent.swiperInstance && window.innerWidth <= 991) {
+        activeSubTabContent.swiperInstance = initTabSwiper(activeSubTabContent);
+        activeSubTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
+    }
+}
+
+const initAllSwipers = () => {
+        document.querySelectorAll('.yourpropfirm-pricing-table-tab-content').forEach(tabContent => {
+            if (tabContent.classList.contains('active')) {
+                if (!tabContent.swiperInstance && window.innerWidth <= 991) {
+                    tabContent.swiperInstance = initTabSwiper(tabContent);
+                    tabContent.swiperInstance.slideTo(activeSlideIndex, 0);
+                }
+            } else if (tabContent.swiperInstance) {
+                tabContent.swiperInstance.destroy();
+                tabContent.swiperInstance = null;
             }
-        }
+        });
     }
 
-    // Initialize all tabs (Level 1, Level 2, Level 3)
-    const initAllTabs = () => {
-        initLevel1Tabs();
-        initLevel2Tabs();
-        initLevel3Tabs();
-    }
+    initAllSwipers();
+    window.addEventListener('resize', initAllSwipers);
+    document.querySelectorAll('.yourpropfirm-pricing-table-tab-button').forEach(button => {
+        button.addEventListener('click', initAllSwipers);
+    });
 
-    // Initialize all tabs when the page is loaded
-    document.addEventListener('DOMContentLoaded', initAllTabs);
+
+// Initialize all tabs (Level 1, Level 2, Level 3)
+const initAllTabs = () => {
+    initLevel1Tabs();
+    initLevel2Tabs();
+    initLevel3Tabs();
+}
+
+// Initialize all tabs when the page is loaded
+document.addEventListener('DOMContentLoaded', initAllTabs);
 
 
 })(jQuery);
