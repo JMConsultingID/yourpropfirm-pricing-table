@@ -129,7 +129,7 @@
         }
     }
 
-    // Initialize all tabs for Level 1 and Level 2 dynamically
+    // Initialize tabs for Level 1 and reinitialize Level 2 dynamically
     document.querySelectorAll('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-nav').forEach(button => {
         button.addEventListener('click', () => {
             // Remove active class from all tabs in level 1
@@ -175,6 +175,9 @@
             activeTabContentLevel3.swiperInstance = initTabSwiper(activeTabContentLevel3);
             activeTabContentLevel3.swiperInstance.slideTo(activeSlideIndex, 0);
         }
+
+        // Initialize sub-tabs on initial load
+        initSubTabs(activeTabContent); // Ensure sub-tabs are initialized for the initially active tab
     }
 
     // Initialize sub-tabs for the active main tab
