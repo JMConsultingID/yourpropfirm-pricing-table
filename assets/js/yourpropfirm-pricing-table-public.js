@@ -147,11 +147,6 @@
     });
 
     const initLevel3Tabs = (activeTabContent) => {
-        // Ensure activeTabContent is valid before querying
-        if (!activeTabContent) {
-            return;
-        }
-
         const level3Buttons = activeTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-button');
         const level3Contents = activeTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content');
 
