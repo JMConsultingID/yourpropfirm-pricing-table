@@ -143,6 +143,52 @@
         }
     }
 
+    // Initialize tabs for Level 1 and reinitialize Level 2 dynamically
+    document.querySelectorAll('.jeg-elementor-kit .tab-nav').forEach(button => {
+        button.addEventListener('click', () => {
+            // Hilangkan class active dari semua tab level 1
+            document.querySelectorAll('.jeg-elementor-kit .tab-nav').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.jeg-elementor-kit .tab-content').forEach(content => content.classList.remove('active'));
+
+            button.classList.add('active');
+            const tabId = button.dataset.tab;
+            const activeContent = document.querySelector(`.jeg-elementor-kit .tab-content.${tabId}`);
+            activeContent.classList.add('active');
+
+            initLevel3Tabs(activeContent);
+        });
+    });
+
+    const initLevel3Tabs = (activeTabContent) => {
+        const level3Buttons = activeTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-button');
+        const level3Contents = activeTabContent.querySelectorAll('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content');
+
+        if (!level3Buttons.length || !level3Contents.length) {
+            return;
+        }
+
+        level3Buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                level3Buttons.forEach(btn => btn.classList.remove('active'));
+                level3Contents.forEach(content => content.classList.remove('active'));
+
+                button.classList.add('active');
+                const tabId = button.dataset.tabId;
+                const activeContent = activeTabContent.querySelector(`.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
+                activeContent.classList.add('active');
+
+                initSubTabs(activeContent);
+            });
+        });
+
+        const activeTabContentLevel3 = activeTabContent.querySelector('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content.active');
+        if (activeTabContentLevel3 && window.innerWidth <= 991) {
+            activeTabContentLevel3.swiperInstance = initTabSwiper(activeTabContentLevel3);
+            activeTabContentLevel3.swiperInstance.slideTo(activeSlideIndex, 0);
+        }
+    }
+
+
     // Initialize sub-tabs for the active main tab
     const initSubTabs = (mainTab) => {
         if (!mainTab) return;
@@ -205,4 +251,15 @@
     // Initialize main tabs for both levels
     initLevel1Tabs();
     initLevel2Tabs();
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Cari tab level 1 yang aktif secara default
+        const activeTabNav = document.querySelector('.jeg-elementor-kit .tab-nav.active');
+        
+        if (activeTabNav) {
+            const tabId = activeTabNav.getAttribute('data-tab');
+            const activeContent = document.querySelector(`.jeg-elementor-kit .tab-content.${tabId}`);
+            initLevel3Tabs(activeContent);
+        }
+    });
 })(jQuery);
