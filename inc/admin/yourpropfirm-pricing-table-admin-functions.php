@@ -258,7 +258,7 @@ function yourpropfirm_pricing_table_pricing_description_callback() {
     } elseif ($mode === 'level-2') {
         $shortcode_tag = 'yourpropfirm_table_level_2';
     } elseif ($mode === 'level-3') {
-        $shortcode_tag = 'yourpropfirm_table_level_2';
+        $shortcode_tag = 'yourpropfirm_table_level_3';
     } else{
         $shortcode_tag = 'yourpropfirm_table_level_1';
     }
