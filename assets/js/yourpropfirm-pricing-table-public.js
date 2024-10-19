@@ -47,17 +47,8 @@
         const prevButton = tabContent.querySelector(".mobile__nav__btn:first-of-type");
         const nextButton = tabContent.querySelector(".mobile__nav__btn:last-of-type");
 
-        if (swiperInstance.isBeginning) {
-            prevButton.classList.add('swiper-button-disabled');
-        } else {
-            prevButton.classList.remove('swiper-button-disabled');
-        }
-
-        if (swiperInstance.isEnd) {
-            nextButton.classList.add('swiper-button-disabled');
-        } else {
-            nextButton.classList.remove('swiper-button-disabled');
-        }
+        prevButton.classList.toggle('swiper-button-disabled', swiperInstance.isBeginning);
+        nextButton.classList.toggle('swiper-button-disabled', swiperInstance.isEnd);
     }
 
     // Initialize tabs for Level 1
@@ -92,10 +83,10 @@
             });
         });
 
+        // Initialize the first tab content on load
         const activeTabContent = document.querySelector('.yourpropfirm-pricing-table-table-level-1 .yourpropfirm-pricing-table-tab-content.active');
-        if (activeTabContent && !activeTabContent.swiperInstance && window.innerWidth <= 991) {
-            activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
-            activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
+        if (activeTabContent) {
+            initSubTabs(activeTabContent);
         }
     }
 
@@ -131,15 +122,14 @@
             });
         });
 
-        const activeTabContent = document.querySelector('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content.active, .yourpropfirm-pricing-table-table-mode-1 .yourpropfirm-pricing-table-tab-content.active');
-        if (activeTabContent && !activeTabContent.swiperInstance && window.innerWidth <= 991) {
-            activeTabContent.swiperInstance = initTabSwiper(activeTabContent);
-            activeTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
+        // Initialize the first active tab for Level 2
+        const activeTabContent = document.querySelector('.yourpropfirm-pricing-table-table-level-2 .yourpropfirm-pricing-table-tab-content.active');
+        if (activeTabContent) {
+            initSubTabs(activeTabContent);
         }
     }
 
-
-    // Initialize tabs for Level 3
+    // Initialize tabs for Level 3 (with Elementor)
     const initLevel3Tabs = () => {
         const tabButtons = document.querySelectorAll('.jeg-elementor-kit .tab-nav');
         const tabContents = document.querySelectorAll('.jeg-elementor-kit .tab-content');
@@ -163,7 +153,7 @@
             });
         });
 
-        // Initialize the first active tab for level 3 on load
+        // Initialize the first active tab for Level 3 on load
         const firstActiveTab = document.querySelector('.jeg-elementor-kit .tab-nav.active');
         if (firstActiveTab) {
             const tabId = firstActiveTab.dataset.tab;
@@ -173,7 +163,7 @@
         }
     }
 
-
+    // Initialize sub-tabs for the active main tab
     const initSubTabs = (mainTab) => {
         if (!mainTab) return;
 
@@ -211,27 +201,6 @@
             activeSubTabContent.swiperInstance.slideTo(activeSlideIndex, 0);
         }
     }
-
-    const initAllSwipers = () => {
-        document.querySelectorAll('.yourpropfirm-pricing-table-tab-content').forEach(tabContent => {
-            if (tabContent.classList.contains('active')) {
-                if (!tabContent.swiperInstance && window.innerWidth <= 991) {
-                    tabContent.swiperInstance = initTabSwiper(tabContent);
-                    tabContent.swiperInstance.slideTo(activeSlideIndex, 0);
-                }
-            } else if (tabContent.swiperInstance) {
-                tabContent.swiperInstance.destroy();
-                tabContent.swiperInstance = null;
-            }
-        });
-    }
-
-    initAllSwipers();
-    window.addEventListener('resize', initAllSwipers);
-    document.querySelectorAll('.yourpropfirm-pricing-table-tab-button').forEach(button => {
-        button.addEventListener('click', initAllSwipers);
-    });
-
 
     // Initialize all tabs (Level 1, Level 2, Level 3)
     const initAllTabs = () => {
