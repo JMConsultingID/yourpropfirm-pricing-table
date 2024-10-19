@@ -164,10 +164,13 @@
                 const activeContent = activeTabContent.querySelector(`.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
                 activeContent.classList.add('active');
 
-                // Initialize sub-tabs inside the active level 3 tab
+                // Reinitialize sub-tabs inside the active level 3 tab after switching tabs
                 initSubTabs(activeContent);
             });
         });
+
+        // Initialize sub-tabs on initial load
+        initSubTabs(activeTabContent); // Ensure sub-tabs are initialized for the initially active tab
 
         // Handle Swiper initialization for the active Level 3 tab
         const activeTabContentLevel3 = activeTabContent.querySelector('.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content.active');
@@ -175,9 +178,6 @@
             activeTabContentLevel3.swiperInstance = initTabSwiper(activeTabContentLevel3);
             activeTabContentLevel3.swiperInstance.slideTo(activeSlideIndex, 0);
         }
-
-        // Initialize sub-tabs on initial load
-        initSubTabs(activeTabContent); // Ensure sub-tabs are initialized for the initially active tab
     }
 
     // Initialize sub-tabs for the active main tab
