@@ -131,8 +131,8 @@
 
     // Initialize tabs for Level 3 (with Elementor)
     const initLevel3Tabs = () => {
-        const tabButtons = document.querySelectorAll('.jeg-elementor-kit .tab-nav');
-        const tabContents = document.querySelectorAll('.jeg-elementor-kit .tab-content');
+        const tabButtons = document.querySelectorAll('.jeg-elementor-kit .yourpropfirm-pricing-table-tab-button');
+        const tabContents = document.querySelectorAll('.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content');
 
         if (!tabButtons.length || !tabContents.length) {
             return;
@@ -140,28 +140,31 @@
 
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
 
+                // Add active class to the clicked tab and its content
                 button.classList.add('active');
-                const tabId = button.dataset.tab;
-                const activeContent = document.querySelector(`.jeg-elementor-kit .tab-content.${tabId}`);
-                activeContent.classList.add('active');
-
-                // Initialize sub-tabs inside Level 3 (if needed)
-                initSubTabs(activeContent);
+                const tabId = button.dataset.tabId;  // Use the correct data attribute for tab
+                const activeContent = document.querySelector(`.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
+                if (activeContent) {
+                    activeContent.classList.add('active');
+                }
             });
         });
 
         // Initialize the first active tab for Level 3 on load
-        const firstActiveTab = document.querySelector('.jeg-elementor-kit .tab-nav.active');
+        const firstActiveTab = document.querySelector('.jeg-elementor-kit .yourpropfirm-pricing-table-tab-button.active');
         if (firstActiveTab) {
-            const tabId = firstActiveTab.dataset.tab;
-            const activeContent = document.querySelector(`.jeg-elementor-kit .tab-content.${tabId}`);
-            activeContent.classList.add('active');
-            initSubTabs(activeContent);  // Initialize sub-tabs for the default active tab
+            const tabId = firstActiveTab.dataset.tabId;
+            const activeContent = document.querySelector(`.jeg-elementor-kit .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
+            if (activeContent) {
+                activeContent.classList.add('active');
+            }
         }
     }
+
 
     // Initialize sub-tabs for the active main tab
     const initSubTabs = (mainTab) => {
