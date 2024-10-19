@@ -144,15 +144,15 @@
     }
 
     // Initialize tabs for Level 1 and reinitialize Level 2 dynamically
-    document.querySelectorAll('.jeg-elementor-kit .tab-nav').forEach(button => {
+    document.querySelectorAll('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-nav').forEach(button => {
         button.addEventListener('click', () => {
             // Hilangkan class active dari semua tab level 1
-            document.querySelectorAll('.jeg-elementor-kit .tab-nav').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.jeg-elementor-kit .tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-nav').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-content').forEach(content => content.classList.remove('active'));
 
             button.classList.add('active');
             const tabId = button.dataset.tab;
-            const activeContent = document.querySelector(`.jeg-elementor-kit .tab-content.${tabId}`);
+            const activeContent = document.querySelector(`.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-content.${tabId}`);
             activeContent.classList.add('active');
 
             initLevel3Tabs(activeContent);  // Initialize level 3 when switching level 1
@@ -253,11 +253,11 @@
 
     document.addEventListener('DOMContentLoaded', () => {
         // Cari tab level 1 yang aktif secara default
-        const activeTabNav = document.querySelector('.jeg-elementor-kit .tab-nav.active');
+        const activeTabNav = document.querySelector('.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-nav.active');
         
         if (activeTabNav) {
             const tabId = activeTabNav.getAttribute('data-tab');
-            const activeContent = document.querySelector(`.jeg-elementor-kit .tab-content.${tabId}`);
+            const activeContent = document.querySelector(`.yourpropfirm-pricing-table-table .jeg-elementor-kit .tab-content.${tabId}`);
             initLevel3Tabs(activeContent);
         }
     });
