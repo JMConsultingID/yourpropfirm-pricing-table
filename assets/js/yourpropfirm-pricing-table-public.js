@@ -239,15 +239,5 @@
         button.addEventListener('click', initAllSwipers);
     });
 
-    // Initialize all tabs (Level 1, Level 2, Level 3)
-    const initAllTabs = () => {
-        initLevel1Tabs();
-        initLevel2Tabs();        
-        initLevel3Tabs();
-    }
-
-    // Initialize all tabs when the page is loaded
-    document.addEventListener('DOMContentLoaded', initAllTabs);
-
 
 })(jQuery);
