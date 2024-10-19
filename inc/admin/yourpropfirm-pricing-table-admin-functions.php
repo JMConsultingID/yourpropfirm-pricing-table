@@ -17,7 +17,7 @@ function yourpropfirm_pricing_table_add_submenu_page() {
         'yourpropfirm_pricing_table_settings_page' // Function to display the page content
     );
 }
-add_action( 'admin_menu', 'yourpropfirm_pricing_table_add_submenu_page' );
+add_action( 'admin_menu', 'yourpropfirm_pricing_table_add_submenu_page', 20);
 
 
 
