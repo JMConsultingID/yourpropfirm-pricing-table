@@ -10,6 +10,7 @@
 /* Add your custom CSS here */
 .yourpropfirm-pricing-table-tab-buttons, .yourpropfirm-pricing-table-sub-tab-buttons {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 20px;
 }
