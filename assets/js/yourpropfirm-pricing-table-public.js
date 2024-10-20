@@ -165,7 +165,8 @@
                 activeContent.classList.add('active');
 
                 // Auto activate the first sub-tab when switching tabs in Level 3
-                activateFirstSubTab(activeContent);
+                initSubTabs(activeContent); // Ensure sub-tabs are initialized for the newly activated tab
+                activateFirstSubTab(activeContent); // Auto activate first sub-tab after clicking tab
             });
         });
 
@@ -176,8 +177,8 @@
             activeTabContentLevel3.swiperInstance.slideTo(activeSlideIndex, 0);
         }
 
-        // Initialize sub-tabs on initial load
-        initSubTabs(activeTabContent); // Ensure sub-tabs are initialized for the initially active tab
+        // Initialize sub-tabs on initial load without activating the first sub-tab automatically
+        initSubTabs(activeTabContent);
     }
 
     // Activate the first sub-tab in the currently active tab content
@@ -186,10 +187,15 @@
         const firstSubTabContent = mainTab.querySelector('.yourpropfirm-pricing-table-sub-tab-content');
 
         if (firstSubTabButton && firstSubTabContent) {
+            // Ensure no other sub-tab is active before activating the first one
+            mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-button').forEach(btn => btn.classList.remove('active'));
+            mainTab.querySelectorAll('.yourpropfirm-pricing-table-sub-tab-content').forEach(content => content.classList.remove('active'));
+
             firstSubTabButton.classList.add('active');
             firstSubTabContent.classList.add('active');
         }
     }
+
 
     // Initialize sub-tabs for the active main tab
     const initSubTabs = (mainTab) => {
