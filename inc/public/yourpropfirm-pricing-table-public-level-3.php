@@ -66,7 +66,10 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
                     <div class="yourpropfirm-pricing-table-sub-tab-buttons">
                         <?php foreach ($products as $productIndex => $product): ?>
                             <div class="yourpropfirm-pricing-table-sub-tab-button <?php echo $productIndex == 0 ? 'active' : ''; ?>" data-sub-tab-id="subtab-<?php echo $product->get_id(); ?>">
-                                <?php echo $product->get_name(); ?>
+                                <?php 
+                                $custom_account_name = get_field('yourpropfirm_challenge_account_name', $product->get_id());
+                                echo $custom_account_name ? $custom_account_name : $product->get_name(); 
+                                ?>
                             </div>
                         <?php endforeach; ?>
                     </div>
