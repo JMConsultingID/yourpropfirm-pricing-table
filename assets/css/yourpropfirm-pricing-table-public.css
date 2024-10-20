@@ -131,19 +131,6 @@
 	margin-right: 0;
 }
 
-.pricing__table .pt__option .pt__option__item.col-3{
-	max-width: 25%;
-}
-
-.pricing__table .pt__option .pt__option__item.col-4{
-	max-width: 33.3333%;
-}
-
-.pricing__table .pt__option .pt__option__item.col-6{
-	max-width: 50%;
-}
-
-
 .pricing__table .pt__option .pt__option__item .pt__item {
 	position: relative;
 	display: flex;
@@ -238,6 +225,17 @@
 		width: 100%;
 		max-width: none;
 		flex: none;
+	}
+	.pricing__table .pt__option .pt__option__item.col-3{
+		max-width: 100%;
+	}
+
+	.pricing__table .pt__option .pt__option__item.col-4{
+		max-width: 100%;
+	}
+
+	.pricing__table .pt__option .pt__option__item.col-6{
+		max-width: 100%;
 	}
 	.pricing__table .pt__option .pt__option__item .pt__item {
 		border: 1px solid #ddd;
