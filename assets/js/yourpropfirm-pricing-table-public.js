@@ -164,8 +164,8 @@
                 const activeContent = activeTabContent.querySelector(`.yourpropfirm-pricing-table-table-level-3 .yourpropfirm-pricing-table-tab-content[data-tab-id="${tabId}"]`);
                 activeContent.classList.add('active');
 
-                // Initialize sub-tabs inside the active level 3 tab
-                initSubTabs(activeContent);
+                // Auto activate the first sub-tab when switching tabs in Level 3
+                activateFirstSubTab(activeContent);
             });
         });
 
