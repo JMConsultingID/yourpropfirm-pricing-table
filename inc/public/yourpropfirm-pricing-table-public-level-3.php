@@ -109,6 +109,7 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
                                         <?php 
                                             if (!is_null($sample_fields) && is_array($sample_fields)) :
                                                 $is_first_label = true;
+                                                $counter = 1; 
                                                 foreach ($sample_fields as $field_key => $field_value) : 
                                                 $field_object = get_field_object($sample_field_group . '_' . $field_key, $product_id);
                                                 if ($field_object) :
@@ -118,7 +119,7 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
                                                         if ($is_first_label && !empty($atts['logo_url'])) {
                                                             echo '<img src="' . esc_url($atts['logo_url']) . '" width="172" alt="' . esc_attr(get_bloginfo('name')) . '">';
                                                         } else {
-                                                            echo esc_html($field_label);
+                                                            echo $counter . ' ' . esc_html($field_label);
                                                         }
                                                     ?>
                                                     <?php if ($tooltips === 'yes' && !empty($tooltip_field_values[$field_key])) : ?>
