@@ -159,7 +159,7 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
 
                                             // Only render the div if there is at least one non-empty field
                                             if ($has_value) : ?>
-                                            <div class="swiper-slide slide-product-id-<?php echo $product_id; ?> pt__option__item <?php echo esc_html($column_class); echo esc_html($level_value); ?>">
+                                            <div class="swiper-slide slide-product-id-<?php echo $product_id; ?> pt__option__item <?php echo esc_html($column_class);?> <?php echo esc_html($level_value); ?>">
                                                 <div class="pt__item">
                                                     <div class="pt__item__wrap">
                                                         <?php
