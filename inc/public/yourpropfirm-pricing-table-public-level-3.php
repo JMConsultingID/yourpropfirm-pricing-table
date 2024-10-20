@@ -81,7 +81,12 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
 
                             <?php
                                 $product_id = $product->get_id();
-                                $product_price = wc_price($product->get_price()); // Get product price with currency symbol
+                                $product_price = $product->get_price();
+                                $product_currency = get_post_meta($product->get_id(), '_currency', true);
+                                if (!$product_currency) {
+                                    $product_currency = get_woocommerce_currency();
+                                }
+                                $formatted_price = wc_price($product_price, array('currency' => $product_currency));
                                 $checkout_url = "/checkout/?add-to-cart={$product_id}"; // Generate checkout URL
 
                                 // ACF field group names for each level
@@ -187,7 +192,7 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
                             </div>
                             </div>
                             <div class="yourpropfirm-pricing-table-checkout-button">
-                                <a href="<?php echo $checkout_url; ?>">Purchase Now (<?php echo $product_price;?>)</a>
+                                <a href="<?php echo $checkout_url; ?>">Purchase Now (<?php echo $formatted_price; ?>)</a>
                             </div>
                         </div>
 
