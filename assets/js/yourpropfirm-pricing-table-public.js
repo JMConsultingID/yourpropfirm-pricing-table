@@ -166,9 +166,6 @@
 
                 // Initialize sub-tabs inside the active level 3 tab
                 initSubTabs(activeContent);
-
-                // Auto activate the first sub-tab when switching tabs in Level 3
-                activateFirstSubTab(activeContent);
             });
         });
 
