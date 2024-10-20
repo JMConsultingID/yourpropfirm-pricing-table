@@ -264,6 +264,7 @@ function yourpropfirm_pricing_table_tooltip_post_id_callback() {
 
 function yourpropfirm_pricing_table_pricing_description_callback() {
     $mode = get_option( 'yourpropfirm_pricing_table_mode', 'level-1' );
+    $column_class = get_option( 'yourpropfirm_pricing_table_column_class', 'col-6' );
     $style = get_option( 'yourpropfirm_pricing_table_style', 'style1' );
     $categories = get_option( 'yourpropfirm_pricing_table_category', 'origin' ); 
     $category_active = get_option( 'yourpropfirm_pricing_table_category_active', '' ); 
@@ -285,7 +286,7 @@ function yourpropfirm_pricing_table_pricing_description_callback() {
     ?>
     <p>Use this shortcode on your Front-End or Table Pricing Page : <br/>
     <code>
-        [<?php echo esc_attr( $shortcode_tag ); ?> tab_mode='<?php echo esc_attr( $mode ); ?>' style='<?php echo esc_attr( $style ); ?>' category='<?php echo esc_attr( $categories ); ?>' category_active='<?php echo esc_attr( $category_active ); ?>' html_value='<?php echo esc_attr( $html_value ); ?>' tooltips='<?php echo esc_attr( $tooltips ); ?>' tooltips_post_id='<?php echo esc_attr( $tooltips_post_id ); ?>' logo_url='<?php echo esc_attr( $logo_url ); ?>' ]
+        [<?php echo esc_attr( $shortcode_tag ); ?> tab_mode='<?php echo esc_attr( $mode ); ?>' column_class='<?php echo esc_attr( $column_class ); ?>' style='<?php echo esc_attr( $style ); ?>' category='<?php echo esc_attr( $categories ); ?>' category_active='<?php echo esc_attr( $category_active ); ?>' html_value='<?php echo esc_attr( $html_value ); ?>' tooltips='<?php echo esc_attr( $tooltips ); ?>' tooltips_post_id='<?php echo esc_attr( $tooltips_post_id ); ?>' logo_url='<?php echo esc_attr( $logo_url ); ?>' ]
     </code>
     </p>
     <?php
