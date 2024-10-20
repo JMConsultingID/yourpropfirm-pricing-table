@@ -1,0 +1,964 @@
+[
+    {
+        "key": "group_66ae6759476b1",
+        "title": "YPF Pricing Plan Levels",
+        "fields": [
+            {
+                "key": "field_671493f4818df",
+                "label": "YPF  Challenge Account Name",
+                "name": "yourpropfirm_challenge_account_name",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_66ae67594cde0",
+                "label": "YPF Pricing Plan Step 1",
+                "name": "yourpropfirm_pricing_plan_step_1",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "table",
+                "sub_fields": [
+                    {
+                        "key": "field_66ae675956c8c",
+                        "label": "Phase Challenge",
+                        "name": "pt_phase_challenge",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "Step Challenge Name",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_66ae675956cc2",
+                        "label": "Challenge Period",
+                        "name": "pt_challenge_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_66ae675956cf7",
+                        "label": "Profit Targets",
+                        "name": "pt_profit_targets",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_66ae675956d2d",
+                        "label": "Profitable Trading Days",
+                        "name": "pt_profitable_trading_days",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_66ae675956d62",
+                        "label": "Max Daily Loss",
+                        "name": "pt_max_daily_loss",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_66ae675956d96",
+                        "label": "Max Overall Loss",
+                        "name": "pt_max_overall_loss",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_66ae675956dcb",
+                        "label": "Leverage",
+                        "name": "pt_leverage",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_66ae675956e00",
+                        "label": "Weekend Holding",
+                        "name": "pt_weekend_holding",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_66ae675956e35",
+                        "label": "Refundable Fee",
+                        "name": "pt_refundable_fee",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_6714956bb4ed7",
+                "label": "YPF Pricing Plan Step 2",
+                "name": "yourpropfirm_pricing_plan_step_2",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "table",
+                "sub_fields": [
+                    {
+                        "key": "field_6714956bb4ed8",
+                        "label": "Step Challenge",
+                        "name": "pt_step_challenge_name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "Step Challenge Name",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_6714956bb4ed9",
+                        "label": "Challenge Period",
+                        "name": "pt_challenge_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_6714956bb4eda",
+                        "label": "Profit Targets",
+                        "name": "pt_profit_targets",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_6714956bb4edb",
+                        "label": "Profitable Trading Days",
+                        "name": "pt_profitable_trading_days",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_6714956bb4edc",
+                        "label": "Max Daily Loss",
+                        "name": "pt_max_daily_loss",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_6714956bb4edd",
+                        "label": "Max Overall Loss",
+                        "name": "pt_max_overall_loss",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_6714956bb4ede",
+                        "label": "Leverage",
+                        "name": "pt_leverage",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_6714956bb4edf",
+                        "label": "Weekend Holding",
+                        "name": "pt_weekend_holding",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_6714956bb4ee0",
+                        "label": "Refundable Fee",
+                        "name": "pt_refundable_fee",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_67149571b4ee1",
+                "label": "YPF Pricing Plan Step 3",
+                "name": "yourpropfirm_pricing_plan_step_3",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "table",
+                "sub_fields": [
+                    {
+                        "key": "field_67149571b4ee2",
+                        "label": "Step Challenge",
+                        "name": "pt_step_challenge_name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "Step Challenge Name",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_67149571b4ee3",
+                        "label": "Challenge Period",
+                        "name": "pt_challenge_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_67149571b4ee4",
+                        "label": "Profit Targets",
+                        "name": "pt_profit_targets",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_67149571b4ee5",
+                        "label": "Profitable Trading Days",
+                        "name": "pt_profitable_trading_days",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_67149571b4ee6",
+                        "label": "Max Daily Loss",
+                        "name": "pt_max_daily_loss",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_67149571b4ee7",
+                        "label": "Max Overall Loss",
+                        "name": "pt_max_overall_loss",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_67149571b4ee8",
+                        "label": "Leverage",
+                        "name": "pt_leverage",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_67149571b4ee9",
+                        "label": "Weekend Holding",
+                        "name": "pt_weekend_holding",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_67149571b4eea",
+                        "label": "Refundable Fee",
+                        "name": "pt_refundable_fee",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "product"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "YPF Pricing Plans",
+        "show_in_rest": 0
+    },
+    {
+        "key": "group_669f6e7b62f3f",
+        "title": "YPF Pricing Plan Tooltips",
+        "fields": [
+            {
+                "key": "field_669f6e7b69c7f",
+                "label": "YPF Pricing Plan Tooltips",
+                "name": "yourpropfirm_pricing_plan_tooltips",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "row",
+                "sub_fields": [
+                    {
+                        "key": "field_669f6e7b6d9a7",
+                        "label": "Challenge Period",
+                        "name": "pt_challenge_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_669f6e7b6d9e6",
+                        "label": "Profit Targets",
+                        "name": "pt_profit_targets",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_669f6e7b6da25",
+                        "label": "Profitable Trading Days",
+                        "name": "pt_profitable_trading_days",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_669f6e7b6da65",
+                        "label": "Max Daily Loss",
+                        "name": "pt_max_daily_loss",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_669f6e7b6daa4",
+                        "label": "Max Overall Loss",
+                        "name": "pt_max_overall_loss",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_669f6e7b6dae2",
+                        "label": "Leverage",
+                        "name": "pt_leverage",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_669f6e7b6db02",
+                        "label": "Weekend Holding",
+                        "name": "pt_weekend_holding",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_669f6e7b6db41",
+                        "label": "Refundable Fee",
+                        "name": "pt_refundable_fee",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "yourpropfirm-tooltip"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "YPF Pricing Plan Tooltips",
+        "show_in_rest": 0
+    },
+    {
+        "key": "post_type_669f6e182d9be",
+        "title": "YPF Tooltips",
+        "menu_order": 0,
+        "active": true,
+        "post_type": "yourpropfirm-tooltip",
+        "advanced_configuration": true,
+        "import_source": "",
+        "import_date": "",
+        "labels": {
+            "name": "YPF Tooltips",
+            "singular_name": "YPF Tooltip",
+            "menu_name": "YPF Tooltips",
+            "all_items": "All YPF Tooltips",
+            "edit_item": "Edit YPF Tooltip",
+            "view_item": "View YPF Tooltip",
+            "view_items": "View YPF Tooltips",
+            "add_new_item": "Add New YPF Tooltip",
+            "add_new": "Add New YPF Tooltip",
+            "new_item": "New YPF Tooltip",
+            "parent_item_colon": "Parent YPF Tooltip:",
+            "search_items": "Search YPF Tooltips",
+            "not_found": "No yourpropfirm tooltips found",
+            "not_found_in_trash": "No yourpropfirm tooltips found in Trash",
+            "archives": "YPF Tooltip Archives",
+            "attributes": "YPF Tooltip Attributes",
+            "featured_image": "",
+            "set_featured_image": "",
+            "remove_featured_image": "",
+            "use_featured_image": "",
+            "insert_into_item": "Insert into yourpropfirm tooltip",
+            "uploaded_to_this_item": "Uploaded to this yourpropfirm tooltip",
+            "filter_items_list": "Filter yourpropfirm tooltips list",
+            "filter_by_date": "Filter yourpropfirm by date",
+            "items_list_navigation": "YPF list navigation",
+            "items_list": "YPF Tooltips list",
+            "item_published": "YPF Tooltip published.",
+            "item_published_privately": "YPF Tooltip published privately.",
+            "item_reverted_to_draft": "YPF Tooltip reverted to draft.",
+            "item_scheduled": "YPF Tooltip scheduled.",
+            "item_updated": "YPF Tooltip updated.",
+            "item_link": "YPF Tooltip Link",
+            "item_link_description": "A link to a yourpropfirm tooltip."
+        },
+        "description": "",
+        "public": true,
+        "hierarchical": false,
+        "exclude_from_search": false,
+        "publicly_queryable": true,
+        "show_ui": true,
+        "show_in_menu": true,
+        "admin_menu_parent": "",
+        "show_in_admin_bar": true,
+        "show_in_nav_menus": true,
+        "show_in_rest": true,
+        "rest_base": "",
+        "rest_namespace": "wp\/v2",
+        "rest_controller_class": "WP_REST_Posts_Controller",
+        "menu_position": 3,
+        "menu_icon": {
+            "type": "dashicons",
+            "value": "dashicons-screenoptions"
+        },
+        "rename_capabilities": false,
+        "singular_capability_name": "post",
+        "plural_capability_name": "posts",
+        "supports": [
+            "title",
+            "custom-fields"
+        ],
+        "taxonomies": "",
+        "has_archive": false,
+        "has_archive_slug": "",
+        "rewrite": {
+            "permalink_rewrite": "post_type_key",
+            "with_front": "1",
+            "feeds": "0",
+            "pages": "1"
+        },
+        "query_var": "post_type_key",
+        "query_var_name": "",
+        "can_export": true,
+        "delete_with_user": false,
+        "register_meta_box_cb": "",
+        "enter_title_here": ""
+    }
+]
