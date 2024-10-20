@@ -175,7 +175,9 @@
             activeTabContentLevel3.swiperInstance = initTabSwiper(activeTabContentLevel3);
             activeTabContentLevel3.swiperInstance.slideTo(activeSlideIndex, 0);
         }
-        activateFirstSubTab(activeTabContent); // Auto activate first sub-tab on load
+
+        // Initialize sub-tabs on initial load
+        initSubTabs(activeTabContent); // Ensure sub-tabs are initialized for the initially active tab
     }
 
     // Activate the first sub-tab in the currently active tab content
