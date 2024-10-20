@@ -10,7 +10,6 @@
 /* Add your custom CSS here */
 .yourpropfirm-pricing-table-tab-buttons, .yourpropfirm-pricing-table-sub-tab-buttons {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
@@ -265,6 +264,9 @@
 }
 
 @media (max-width: 640px) {
+	.yourpropfirm-pricing-table-tab-buttons, .yourpropfirm-pricing-table-sub-tab-buttons {
+    	flex-wrap: wrap;
+	}
 	.yourpropfirm-pricing-table-sub-tab-button{
 		flex: 1 1 45%; 
 		max-width: 45%;
