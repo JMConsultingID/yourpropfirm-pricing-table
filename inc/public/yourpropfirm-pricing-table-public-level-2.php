@@ -12,6 +12,7 @@ function yourpropfirm_pricing_table_level_2_shortcode($atts) {
     $atts = shortcode_atts(
         array(
             'tab_mode' => 'level-2',
+            'column_class' => 'col-6',
             'category' => '1-phase-challenge',
             'category_active' => '1-phase-challenge',
             'html_value' => 'yes',
@@ -29,6 +30,7 @@ function yourpropfirm_pricing_table_level_2_shortcode($atts) {
 
     $tab_mode = $atts['tab_mode'];
     $tooltips = $atts['tooltips'];
+    $column_class = $atts['column_class'];
     $tooltips_post_id = $atts['tooltips_post_id'];
     $tooltips_post_id = explode(',', $atts['tooltips_post_id']);
 
@@ -66,7 +68,10 @@ function yourpropfirm_pricing_table_level_2_shortcode($atts) {
                     <div class="yourpropfirm-pricing-table-sub-tab-buttons">
                         <?php foreach ($products as $productIndex => $product): ?>
                             <div class="yourpropfirm-pricing-table-sub-tab-button <?php echo $productIndex == 0 ? 'active' : ''; ?>" data-sub-tab-id="subtab-<?php echo $product->get_id(); ?>">
-                                <?php echo $product->get_name(); ?>
+                                <?php 
+                                $custom_account_name = get_field('yourpropfirm_challenge_account_name', $product->get_id());
+                                echo $custom_account_name ? $custom_account_name : $product->get_name(); 
+                                ?>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -81,9 +86,9 @@ function yourpropfirm_pricing_table_level_2_shortcode($atts) {
 
                                 // ACF field group names for each level
                                 $acf_levels = array(
-                                    'level_1' => 'yourpropfirm_pricing_table_plan_step_1',
-                                    'level_2' => 'yourpropfirm_pricing_table_plan_step_2',
-                                    'level_3' => 'yourpropfirm_pricing_table_plan_step_3',
+                                    'level_1' => 'yourpropfirm_pricing_plan_step_1',
+                                    'level_2' => 'yourpropfirm_pricing_plan_step_2',
+                                    'level_3' => 'yourpropfirm_pricing_plan_step_3',
                                 );
 
                                 // Fetch tooltip values
@@ -154,7 +159,7 @@ function yourpropfirm_pricing_table_level_2_shortcode($atts) {
 
                                             // Only render the div if there is at least one non-empty field
                                             if ($has_value) : ?>
-                                            <div class="swiper-slide slide-product-id-<?php echo $product_id; ?> pt__option__item <?php echo esc_html($level_value); ?>">
+                                            <div class="swiper-slide slide-product-id-<?php echo $product_id; ?> pt__option__item <?php echo esc_html($column_class);?> <?php echo esc_html($level_value); ?>">
                                                 <div class="pt__item">
                                                     <div class="pt__item__wrap">
                                                         <?php

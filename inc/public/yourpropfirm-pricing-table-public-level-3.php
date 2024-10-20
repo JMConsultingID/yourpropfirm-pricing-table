@@ -11,7 +11,7 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
     $enabled_pricing_table = get_option('yourpropfirm_pricing_table_enable_table_pricing');
     $atts = shortcode_atts(
         array(
-            'tab_mode' => 'level-2',
+            'tab_mode' => 'level-3',
             'column_class' => 'col-6',
             'category' => '1-phase-challenge',
             'category_active' => '1-phase-challenge',
