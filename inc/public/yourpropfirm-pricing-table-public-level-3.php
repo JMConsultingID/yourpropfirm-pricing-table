@@ -12,6 +12,7 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
     $atts = shortcode_atts(
         array(
             'tab_mode' => 'level-2',
+            'column_class' => 'col-6',
             'category' => '1-phase-challenge',
             'category_active' => '1-phase-challenge',
             'html_value' => 'yes',
@@ -29,6 +30,7 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
 
     $tab_mode = $atts['tab_mode'];
     $tooltips = $atts['tooltips'];
+    $column_class = $atts['column_class'];
     $tooltips_post_id = $atts['tooltips_post_id'];
     $tooltips_post_id = explode(',', $atts['tooltips_post_id']);
 
@@ -157,7 +159,7 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
 
                                             // Only render the div if there is at least one non-empty field
                                             if ($has_value) : ?>
-                                            <div class="swiper-slide slide-product-id-<?php echo $product_id; ?> pt__option__item <?php echo esc_html($level_value); ?>">
+                                            <div class="swiper-slide slide-product-id-<?php echo $product_id; ?> pt__option__item <?php echo esc_html($column_class); <?php echo esc_html($level_value); ?>">
                                                 <div class="pt__item">
                                                     <div class="pt__item__wrap">
                                                         <?php
