@@ -19,6 +19,7 @@
 
 }
 .yourpropfirm-pricing-table-tab-button, .yourpropfirm-pricing-table-sub-tab-button {
+	text-align: center;
     padding: 10px 20px;
     cursor: pointer;
     background-color: #f1f1f1;
@@ -264,6 +265,10 @@
 }
 
 @media (max-width: 640px) {
+	.yourpropfirm-pricing-table-sub-tab-button{
+		flex: 1 1 45%; 
+		max-width: 45%;
+	}
 	.pricing__table {
 		margin: 60px 15px;
 	}
