@@ -12,10 +12,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 10px;
     margin-bottom: 20px;
 }
+.yourpropfirm-pricing-table-sub-tab-buttons{
+
+}
 .yourpropfirm-pricing-table-tab-button, .yourpropfirm-pricing-table-sub-tab-button {
-    margin: 0 10px;
     padding: 10px 20px;
     cursor: pointer;
     background-color: #f1f1f1;
