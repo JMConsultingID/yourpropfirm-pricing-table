@@ -118,8 +118,10 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
                                                     <?php 
                                                         if ($is_first_label && !empty($atts['logo_url'])) {
                                                             echo '<img src="' . esc_url($atts['logo_url']) . '" width="172" alt="' . esc_attr(get_bloginfo('name')) . '">';
-                                                        } else {
+                                                        } elseif ($is_first_label) {
                                                             echo $counter . ' ' . esc_html($field_label);
+                                                        } else {
+                                                            echo esc_html($field_label);
                                                         }
                                                     ?>
                                                     <?php if ($tooltips === 'yes' && !empty($tooltip_field_values[$field_key])) : ?>
