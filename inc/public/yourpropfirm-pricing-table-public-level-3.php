@@ -82,7 +82,7 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
                             <?php
                                 $product_id = $product->get_id();
                                 $product_price = $product->get_price();
-                                $product_currency = get_post_meta($product->get_id(), '_currency', true);
+                                $product_currency = get_post_meta($product->get_id(), 'alg_wc_cpp_currency', true);
                                 if (!$product_currency) {
                                     $product_currency = get_woocommerce_currency();
                                 }
