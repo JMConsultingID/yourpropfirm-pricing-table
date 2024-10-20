@@ -196,9 +196,9 @@ function yourpropfirm_pricing_table_column_class_callback() {
     $options = get_option( 'yourpropfirm_pricing_table_column_class' );
     ?>
     <select name="yourpropfirm_pricing_table_column_class">
-        <option value="col-6" <?php selected( $options, 'level-1' ); ?>>2 Columns</option>
-        <option value="col-4" <?php selected( $options, 'level-2' ); ?>>3 Columns</option>
-        <option value="col-3" <?php selected( $options, 'level-3' ); ?>>4 Columns</option>
+        <option value="col-6" <?php selected( $options, 'col-6' ); ?>>2 Columns</option>
+        <option value="col-4" <?php selected( $options, 'col-4' ); ?>>3 Columns</option>
+        <option value="col-3" <?php selected( $options, 'col-3' ); ?>>4 Columns</option>
     </select>
     <?php
 }
