@@ -42,6 +42,7 @@ add_action( 'admin_init', 'yourpropfirm_pricing_table_register_table_pricing_set
 function yourpropfirm_pricing_table_register_table_pricing_setting_fields() {
     register_setting( 'yourpropfirm_pricing_table_settings_group', 'yourpropfirm_pricing_table_enable_table_pricing' );
     register_setting( 'yourpropfirm_pricing_table_settings_group', 'yourpropfirm_pricing_table_mode' );
+    register_setting( 'yourpropfirm_pricing_table_settings_group', 'yourpropfirm_pricing_table_column_class' );
     register_setting( 'yourpropfirm_pricing_table_settings_group', 'yourpropfirm_pricing_table_style' );
     register_setting( 'yourpropfirm_pricing_table_settings_group', 'yourpropfirm_pricing_table_category' );
     register_setting( 'yourpropfirm_pricing_table_settings_group', 'yourpropfirm_pricing_table_category_active' );
@@ -77,6 +78,14 @@ function yourpropfirm_pricing_table_register_table_pricing_setting_fields() {
         'yourpropfirm_pricing_table_mode',
         'Tab Mode',
         'yourpropfirm_pricing_table_mode_callback',
+        'yourpropfirm-pricing-table-settings',
+        'yourpropfirm_pricing_table_settings_section'
+    );
+
+    add_settings_field(
+        'yourpropfirm_pricing_table_column_class',
+        'Select Table Column',
+        'yourpropfirm_pricing_table_column_class_callback',
         'yourpropfirm-pricing-table-settings',
         'yourpropfirm_pricing_table_settings_section'
     );
@@ -179,6 +188,17 @@ function yourpropfirm_pricing_table_mode_callback() {
         <option value="level-1" <?php selected( $options, 'level-1' ); ?>>Tab Level 1</option>
         <option value="level-2" <?php selected( $options, 'level-2' ); ?>>Tab Level 2</option>
         <option value="level-3" <?php selected( $options, 'level-3' ); ?>>Tab Level 3 (Jkit Tabs)</option>
+    </select>
+    <?php
+}
+
+function yourpropfirm_pricing_table_column_class_callback() {
+    $options = get_option( 'yourpropfirm_pricing_table_column_class' );
+    ?>
+    <select name="yourpropfirm_pricing_table_column_class">
+        <option value="col-6" <?php selected( $options, 'level-1' ); ?>>2 Columns</option>
+        <option value="col-4" <?php selected( $options, 'level-2' ); ?>>3 Columns</option>
+        <option value="col-3" <?php selected( $options, 'level-3' ); ?>>4 Columns</option>
     </select>
     <?php
 }
