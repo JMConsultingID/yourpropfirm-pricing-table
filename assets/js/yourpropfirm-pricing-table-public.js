@@ -181,7 +181,6 @@
 
         // Initialize sub-tabs on initial load
         initSubTabs(activeTabContent); // Ensure sub-tabs are initialized for the initially active tab
-        activateFirstSubTab(activeTabContent); // Auto activate first sub-tab on load
     }
 
     // Activate the first sub-tab in the currently active tab content
