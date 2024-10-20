@@ -189,7 +189,7 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
                             </div>
                             </div>
                             <div class="yourpropfirm-pricing-table-checkout-button">
-                                <a href="<?php echo $checkout_url; ?>">Purchase Now (<?php echo $formatted_price; ?>)</a>
+                                <a href="<?php echo $checkout_url; ?>">Start Challenge (<?php echo $formatted_price; ?>)</a>
                             </div>
                         </div>
 
