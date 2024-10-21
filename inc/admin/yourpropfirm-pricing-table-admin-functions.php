@@ -7,17 +7,46 @@
  *
  * @package yourpropfirm-pricing-table
  */
-function yourpropfirm_pricing_table_add_submenu_page() {
-    add_submenu_page(
-        'yourpropfirm_dashboard', // Parent slug (from yourpropfirm plugin)
-        'YPF Pricing Table', // Page title
-        'YPF Pricing Table', // Menu title
-        'manage_options', // Capability
-        'yourpropfirm_pricing_table_settings', // Menu slug
-        'yourpropfirm_pricing_table_settings_page' // Function to display the page content
-    );
+function yourpropfirm_pricing_table_add_menu_or_submenu() {
+    // Check if 'yourpropfirm_dashboard' (from yourpropfirm plugin) exists
+    global $menu;
+    $parent_slug = 'yourpropfirm_dashboard';
+    $parent_exists = false;
+
+    // Loop through all registered menus to check if the parent exists
+    foreach ( $menu as $menu_item ) {
+        if ( $menu_item[2] === $parent_slug ) {
+            $parent_exists = true;
+            break;
+        }
+    }
+
+    if ( $parent_exists ) {
+        // Add as submenu if parent exists
+        add_submenu_page(
+            'yourpropfirm_dashboard', // Parent menu slug
+            'YPF Pricing Table', // Page title
+            'YPF Pricing Table', // Menu title
+            'manage_options', // Capability
+            'yourpropfirm_pricing_table_settings', // Menu slug
+            'yourpropfirm_pricing_table_settings_page' // Function to display the page content
+        );
+    } else {
+        // Add as top-level menu if parent does not exist
+        add_menu_page(
+            'YPF Pricing Table', // Page title
+            'YPF Pricing Table', // Menu title
+            'manage_options', // Capability
+            'yourpropfirm_pricing_table_settings', // Menu slug
+            'yourpropfirm_pricing_table_settings_page', // Function to display the page content
+            'dashicons-screenoptions', // Icon URL
+            3 // Position
+        );
+    }
 }
-add_action( 'admin_menu', 'yourpropfirm_pricing_table_add_submenu_page', 20);
+
+add_action( 'admin_menu', 'yourpropfirm_pricing_table_add_menu_or_submenu', 20 );
+
 
 
 
