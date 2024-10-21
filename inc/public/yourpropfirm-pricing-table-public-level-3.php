@@ -86,7 +86,14 @@ function yourpropfirm_pricing_table_level_3_shortcode($atts) {
                                 if (!$product_currency) {
                                     $product_currency = get_woocommerce_currency();
                                 }
-                                $formatted_price = wc_price($product_price, array('currency' => $product_currency));
+
+                                $formatted_price = wc_price($product_price, array(
+                                    'currency'           => $product_currency,
+                                    'thousand_separator' => ',',
+                                    'decimal_separator'  => '',
+                                    'decimals'           => 0, // Menyembunyikan desimal
+                                ));
+                                
                                 $checkout_url = "/checkout/?add-to-cart={$product_id}"; // Generate checkout URL
 
                                 // ACF field group names for each level
